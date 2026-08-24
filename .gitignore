@@ -1,0 +1,10 @@
+.DS_Store
+node_modules/
+
+# artefacts d'une install locale de test (le repo ne s'installe pas dans lui-même)
+/.claude/
+/.codex/
+/.print-to-web/
+/templates/
+/AGENTS.md
+/CLAUDE.md

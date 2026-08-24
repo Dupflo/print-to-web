@@ -130,6 +130,7 @@ Le même principe s'applique partout : **l'agent constate et propose, l'humain t
 | `/ptw-assets` | Resize + WebP sans dégradation, originaux intacts | `assets/web/` + `docs/assets.md` |
 | `/ptw-mockup` | Brief autonome puis maquette Figma (MCP) ou Claude Design | `docs/mockup-brief.md` + fichier Figma |
 | `/ptw-html` | Bonus : prototype HTML/CSS navigable | `site/index.html` |
+| `/ptw-review [doc\|all]` | Relecture à contexte vierge par un **agent différent** (Codex si installé, sinon sous-agent) : clarté pour un lecteur non technique, cohérence entre les docs, fidélité au print | `docs/reviews/<doc>.md` |
 | `/ptw-status` | État du projet dérivé des fichiers | — |
 | `/ptw-update` | Détecte une nouvelle version du plugin et l'applique | — |
 | `/ptw-help` | Antisèche du pipeline | — |
@@ -225,7 +226,8 @@ votre-projet/
 2. **L'agent constate, l'humain tranche.** Recommandation de format, direction visuelle, outil de maquette : trois checkpoints, trois vraies décisions humaines.
 3. **Rien d'inventé.** Ni couleur, ni fonte, ni texte. Ce qui manque est un `TROU DE CONTENU` assumé — une information pour le client, pas un défaut à masquer.
 4. **L'état vit dans les fichiers.** Markdown sous `docs/`, versionné si le projet est un repo git. Un état dérivé ne périme pas.
-5. **Instructions en anglais, sorties dans votre langue.** Les commandes et règles (`src/`) sont en anglais — la norme de l'écosystème, et le plus fiable pour les modèles. Mais l'agent vous parle et écrit les `docs/` dans la langue de vos documents print : plaquette française → PRD, wireframe et maquette en français.
+5. **Langage clair, pas de jargon.** Les docs sont lus par un designer et son client, pas par un développeur. Les termes techniques sans explication (« scope creep », « above the fold »…) sont bannis des questions et des livrables — c'est même un critère de la relecture `/ptw-review`.
+6. **Instructions en anglais, sorties dans votre langue.** Les commandes et règles (`src/`) sont en anglais — la norme de l'écosystème, et le plus fiable pour les modèles. Mais l'agent vous parle et écrit les `docs/` dans la langue de vos documents print : plaquette française → PRD, wireframe et maquette en français.
 
 ## Contribuer
 

@@ -27,6 +27,8 @@ print-to-web — from a print document to a web mockup
                               → docs/mockup-brief.md + Figma file
   8. /ptw-html                bonus: navigable prototype → site/index.html
 
+  /ptw-review [doc|all]   fresh-eyes review by a different agent (Codex
+                          if installed) — clarity, coherence, fidelity
   /ptw-status             where the project stands, next command
   /ptw-update             check for a newer plugin version, apply it
 

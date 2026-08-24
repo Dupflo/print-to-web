@@ -31,7 +31,7 @@ docs/wireframe.md missing → run the /ptw-wireframe contract (real content, zer
 docs/assets.md missing → run the /ptw-assets contract (WebP, originals untouched).
 
 ## Phase 7 — Mockup
-Mechanical gate of /ptw-mockup (PRD `validated: yes` + design system + wireframe), then tool CHECKPOINT: AskUserQuestion "Generate the mockup with?" — Figma via MCP (default) / Claude Design / Brief only. Run the /ptw-mockup contract with that choice.
+Mechanical gate of /ptw-mockup (PRD `validated: yes` + design system + wireframe). Then offer a fresh-eyes pass in one line: "/ptw-review can have a different agent re-read everything before the mockup" — run it only on explicit request; if a review exists and says `Review passed: no`, surface its major findings and ask whether to fix first. Then tool CHECKPOINT: AskUserQuestion "Generate the mockup with?" — Figma via MCP (default) / Claude Design / Brief only. Run the /ptw-mockup contract with that choice.
 
 ## Phase 8 — HTML (optional)
 Offer /ptw-html in one line. Only run it on explicit request.

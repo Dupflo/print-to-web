@@ -10,6 +10,8 @@ No mockup is generated before the PRD is validated (`docs/prd.md` → frontmatte
 ## Language
 Instructions are in English; the user is not. Speak to the user and write the content of every `docs/` file in the language of the print documents (or the user's language if they differ — ask once if ambiguous). When filling a template for a non-English project, translate its section headings into the project language. Verbatim quotes from the print stay verbatim.
 
+Plain language: the readers are designers and their clients, not developers. In questions and in every `docs/` file, avoid unexplained technical jargon ("scope creep", "above the fold", "token", "responsive", "CTA"…) — use the everyday word, or keep the technical term with a short plain-language gloss in parentheses the first time it appears. A question the client has to google is a failed question.
+
 ## Pipeline (commands)
 - `/ptw-analyze <folder>`   analyze the print folder: asset inventory, visual identity, content structure, recommended web format
 - `/ptw-brief`              one-pass framing questionnaire → PRD: goal, validated format, perimeter, features, constraints
@@ -24,6 +26,7 @@ Utilities:
 - `/ptw`         orchestrator: runs the whole pipeline with human checkpoints
 - `/ptw-status`  project state derived from the files, next command
 - `/ptw-help`    pipeline map (cheat sheet)
+- `/ptw-review`  fresh-eyes review of the docs by a DIFFERENT agent (Codex CLI if available, otherwise a fresh-context subagent) — clarity for non-technical readers, cross-doc coherence, verbatim fidelity. Advisory: a failed review blocks nothing mechanically, but /ptw-mockup and the orchestrator surface it.
 - `/ptw-update`  check for a newer plugin version, apply it on confirmation
 
 ## Gates (mechanical, fail-closed)

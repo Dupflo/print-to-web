@@ -16,7 +16,7 @@ Fail-closed: docs/analyse.md must exist. Missing → STOP: "No analysis — the 
 
 The whole point of the plugin lives here: ask the right questions IN ONE PASS so the designer/developer never goes back to the client at every phase. Every question builds on the analysis — never ask something already answered in docs/analyse.md.
 
-Reminder (repo rules): questions and docs/prd.md are written in the user's language.
+Reminder (repo rules): questions and docs/prd.md are written in the user's language, in plain language — the person answering may be a designer or the client themselves. No unexplained jargon: say "la dérive du périmètre" rather than "scope creep", "le bouton d'action principal" before abbreviating to "CTA", and gloss any technical term the first time it appears.
 
 ## Workflow
 
@@ -37,7 +37,7 @@ Cover these axes — rephrase each question with the concrete elements from the 
 The content gaps identified in the analysis are submitted to the user: who produces the missing content, or does the section get dropped?
 
 ### Step 3 — Write and validate
-1. Fill every section of the template with the answers. Fill nothing the user hasn't validated. The graveyard is exhaustive — it is what kills scope creep.
+1. Fill every section of the template with the answers. Fill nothing the user hasn't validated. The graveyard is exhaustive — it is what keeps the project from silently growing later.
 2. Present the PRD summary (format, sections, secondary content with its mechanisms, CTA, features, graveyard) and ask via AskUserQuestion: "Validate this PRD?" — options: Validate / Modify. On Validate, write `validated: yes` in the frontmatter. Otherwise iterate — the marker stays `no`.
 3. Write docs/prd.md. If the project is a git repo, commit (`docs: prd`).
 

@@ -11,6 +11,7 @@ Use this template for the brief:
 1. Does docs/prd.md contain `validated: yes` in its frontmatter? No → STOP: "PRD not validated — rerun /ptw-brief for the validation checkpoint." No file, no marker → no mockup. No exceptions.
 2. Do docs/design-system.md and docs/wireframe.md exist? Missing → STOP pointing to the command.
 3. Does docs/assets.md exist? Missing → warn (the mockup will use image placeholders named after the print folder) but continue if the user confirms.
+4. Advisory: `grep -l 'Review passed: no' docs/reviews/*.md` → surface the failed review's major findings and ask whether to fix first or proceed anyway. No review at all → offer /ptw-review in one line, don't insist.
 
 ## Step 1 — The mockup brief (always, whatever the tool)
 Write docs/mockup-brief.md BEFORE any generation (in the user's language): a self-contained document that would let any tool (or any designer) produce the mockup without reading anything else. It compiles: the design system tokens, the visual direction (inspiration invariants), section by section the wireframe with the real content and the associated optimized asset (`assets/web/…` path), and the Do/Don't. Nothing invented: everything comes from the pipeline docs.

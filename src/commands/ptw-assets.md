@@ -1,40 +1,40 @@
 ---
-description: Optimiser les images du dossier print pour le web — resize + WebP sans dégradation visible, originaux intacts, manifeste des correspondances
-argument-hint: (optionnel) chemin du dossier print si docs/analyse.md n'existe pas
+description: Optimize the print folder images for the web — resize + WebP with no visible degradation, originals untouched, mapping manifest
+argument-hint: (optional) path to the print folder if docs/analyse.md doesn't exist
 allowed-tools:
   - Read
   - Glob
   - Write
   - Bash
 ---
-# ptw-assets — Du print au web sans casser les images
+# ptw-assets — From print to web without breaking the images
 
-Utilise ce template pour le manifeste :
+Use this template for the manifest:
 @templates/assets.md
 
-Règle absolue : les fichiers originaux ne sont JAMAIS modifiés, déplacés ni renommés. Tout ce qui est produit va dans `assets/web/`.
+Absolute rule: the original files are NEVER modified, moved or renamed. Everything produced goes into `assets/web/`.
 
-## Déroulé
+## Workflow
 
-### Étape 1 — Sélection
-Pars de docs/wireframe.md (les assets réellement utilisés) s'il existe, sinon de l'inventaire de docs/analyse.md, sinon du dossier passé en $ARGUMENTS. N'optimise que ce qui servira au site — pas les 40 photos du dossier si le wireframe en utilise 6. Signale ce que tu laisses de côté.
+### Step 1 — Selection
+Start from docs/wireframe.md (the assets actually used) if it exists, otherwise from the inventory in docs/analyse.md, otherwise from the folder passed as $ARGUMENTS. Only optimize what the site will use — not the folder's 40 photos when the wireframe uses 6. Report what you leave aside.
 
-### Étape 2 — Outils
-Détecte ce qui est disponible, dans cet ordre de préférence : `cwebp` (contrôle qualité fin), `magick`/`convert` (ImageMagick), `sips` (macOS — vérifie que l'export WebP est supporté : `sips -s format webp` sur un fichier test). Rien ne permet d'encoder du WebP → propose l'installation (`brew install webp`) et STOP, n'invente pas un format de repli sans le dire.
+### Step 2 — Tools
+Detect what's available, in this order of preference: `cwebp` (fine quality control), `magick`/`convert` (ImageMagick), `sips` (macOS — verify WebP export is supported: `sips -s format webp` on a test file). Nothing can encode WebP → suggest installing (`brew install webp`) and STOP; don't invent a fallback format silently.
 
-### Étape 3 — Conversion
-Cibles par usage (jamais d'upscale — si l'original est plus petit, garde sa taille) :
-- Hero / images plein écran : largeur max 2560 px, qualité WebP 82
-- Images de section / galerie : largeur max 1600 px, qualité 82
-- Vignettes / cartes : largeur max 800 px, qualité 80
-- Logos : si un vecteur (SVG/PDF) existe, note-le comme format à privilégier ; sinon PNG transparent conservé + variante WebP. Jamais de fond ajouté.
-- Plans / documents techniques lisibles : qualité 90 — le texte doit rester net (c'est le cas "sans les dégrader" du besoin).
-Nommage : `assets/web/<usage>-<slug>.webp` (ex. `hero-perspective-sud.webp`), prévisible et lisible.
+### Step 3 — Conversion
+Targets per usage (never upscale — if the original is smaller, keep its size):
+- Hero / full-screen images: max width 2560 px, WebP quality 82
+- Section / gallery images: max width 1600 px, quality 82
+- Thumbnails / cards: max width 800 px, quality 80
+- Logos: if a vector (SVG/PDF) exists, note it as the format to prefer; otherwise keep the transparent PNG + a WebP variant. Never add a background.
+- Floor plans / readable technical documents: quality 90 — the text must stay sharp (this is the "without degrading them" case of the requirement).
+Naming: `assets/web/<usage>-<slug>.webp` (e.g. `hero-south-view.webp`), predictable and readable, slugs in the project language.
 
-### Étape 4 — Vérification
-Pour chaque image : compare poids avant/après et vérifie visuellement (Read) au moins le hero et un plan — artefacts visibles ou texte flou → remonte la qualité et refais. Rapporte le gain total.
+### Step 4 — Verification
+For each image: compare before/after weight and visually check (Read) at least the hero and one plan — visible artifacts or blurry text → raise the quality and redo. Report the total gain.
 
-### Étape 5 — Manifeste
-Écris docs/assets.md : original → optimisé, dimensions, poids avant/après, usage prévu (section du wireframe). Si le projet est un repo git, commite (`docs: assets` — inclure assets/web/).
+### Step 5 — Manifest
+Write docs/assets.md (in the user's language): original → optimized, dimensions, before/after weight, planned usage (wireframe section). If the project is a git repo, commit (`docs: assets` — include assets/web/).
 
-Termine par : "<n> assets optimisés dans assets/web/ (−<x> % de poids total). Manifeste : docs/assets.md. Prochaine étape : /ptw-mockup"
+End with: "<n> assets optimized in assets/web/ (−<x>% total weight). Manifest: docs/assets.md. Next step: /ptw-mockup" (in the user's language).

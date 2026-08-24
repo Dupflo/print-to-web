@@ -1,28 +1,28 @@
 ---
-description: Wireframe maison en markdown/ASCII — sections desktop + notes mobile, mappé sur le contenu réel du print
+description: Homemade markdown/ASCII wireframe — desktop sections + mobile notes, mapped to the real print content
 allowed-tools:
   - Read
   - Write
   - Bash
   - AskUserQuestion
 ---
-# ptw-wireframe — Le squelette du site, avec du vrai contenu
+# ptw-wireframe — The site's skeleton, with real content
 
-Utilise ce template comme structure de sortie :
+Use this template as the output structure:
 @templates/wireframe.md
 
-Fail-closed : docs/prd.md doit exister (il fixe le format et les sections). Absent → STOP : "Pas de PRD — lance /ptw-brief d'abord." docs/design-system.md est recommandé mais pas bloquant : sans lui, le wireframe reste purement structurel (aucune indication visuelle).
+Fail-closed: docs/prd.md must exist (it locks the format and the sections). Missing → STOP: "No PRD — run /ptw-brief first." docs/design-system.md is recommended but not blocking: without it, the wireframe stays purely structural (no visual indication).
 
-Le wireframe est un contrat de structure, pas un dessin : ordre des sections, hiérarchie de l'information dans chaque section, et surtout le mapping vers le contenu réel. Lorem ipsum interdit — chaque zone de texte cite son contenu source (plaquette, page/section) ou porte la mention `TROU DE CONTENU` héritée du PRD.
+The wireframe is a structure contract, not a drawing: section order, information hierarchy inside each section, and above all the mapping to real content. Lorem ipsum is forbidden — every text zone cites its source content (brochure, page/section) or carries the `CONTENT GAP` marker inherited from the PRD (translated into the user's language, e.g. `TROU DE CONTENU` in French — keep it consistent across all docs).
 
-## Déroulé
-1. Lis docs/prd.md (format, sections retenues, CTA, priorités) et docs/stories.md si présent (une story par section = la raison d'être de la section, mets-la en commentaire).
-2. Pour chaque section, produis :
-   - Un schéma ASCII desktop (blocs, proportions grossières, position du CTA).
-   - Le mapping contenu : chaque bloc → texte réel (cité ou résumé avec référence) + asset pressenti (nom de fichier du dossier print).
-   - Les notes mobile : ce qui s'empile, ce qui disparaît, ce qui se transforme (ex. tableau → cartes).
-3. Ordre des sections = un parcours de conversion : le CTA principal du PRD doit être atteignable sans scroll profond et répété en fin de page.
-4. Signale les décisions structurantes ouvertes (ex. plans d'étage en galerie ou en onglets ?) via AskUserQuestion si elles changent la maquette — sinon tranche et note-le.
-5. Écris docs/wireframe.md. Si le projet est un repo git, commite (`docs: wireframe`).
+## Workflow
+1. Read docs/prd.md (format, kept sections, CTA, priorities) and docs/stories.md if present (one story per section = the section's reason to exist, put it as a comment).
+2. For each section, produce:
+   - An ASCII desktop diagram (blocks, rough proportions, CTA position).
+   - The content mapping: each block → real text (quoted or summarized with its reference) + likely asset (file name from the print folder).
+   - Mobile notes: what stacks, what disappears, what transforms (e.g. table → cards).
+3. Section order = a conversion path: the PRD's primary CTA must be reachable without deep scrolling and repeated at the end of the page.
+4. Flag open structural decisions (e.g. floor plans as a gallery or as tabs?) via AskUserQuestion if they change the mockup — otherwise decide and record it.
+5. Write docs/wireframe.md (in the user's language). If the project is a git repo, commit (`docs: wireframe`).
 
-Termine par : "Wireframe prêt dans docs/wireframe.md (<n> sections). Prochaine étape : /ptw-assets"
+End with: "Wireframe ready in docs/wireframe.md (<n> sections). Next step: /ptw-assets" (in the user's language).

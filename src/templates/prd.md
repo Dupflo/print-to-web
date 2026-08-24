@@ -1,44 +1,46 @@
 ---
 validated: no
 ---
-# PRD — <projet>
+# PRD — <project>
 
-## Objectif du site
-<à quoi sert le site, en une phrase — et le CTA principal>
+<!-- Fill in the project language; translate headings accordingly. Keep the frontmatter keys as-is. -->
 
-## Format retenu
-<one page / multipage / one page + annexes — décidé avec l'utilisateur, écart éventuel avec la recommandation de l'analyse>
+## Site goal
+<what the site is for, in one sentence — and the primary CTA>
 
-## Cibles
-<profils de visiteurs, contexte de visite, device prioritaire>
+## Chosen format
+<one page / multipage / one page + annexes — decided with the user, note any deviation from the analysis recommendation>
 
-## Périmètre — sections retenues
-| Section | Contenu source (print) | Priorité | Story liée |
+## Audiences
+<visitor profiles, visit context, priority device>
+
+## Perimeter — kept sections
+| Section | Source content (print) | Priority | Linked story |
 |---|---|---|---|
 
-## Hors périmètre (graveyard)
-<ce qu'on ne fait explicitement PAS — sections écartées, fonctionnalités refusées. Exhaustif : cette liste tue le scope creep.>
+## Out of scope (graveyard)
+<what we explicitly do NOT do — discarded sections, refused features. Exhaustive: this list kills scope creep.>
 
-## Fonctionnalités
-| Fonctionnalité | Dans le périmètre ? | Détail |
+## Features
+| Feature | In scope? | Detail |
 |---|---|---|
-| Formulaire de contact | oui/non | <champs, destinataire> |
-| Téléchargement plaquette | oui/non | |
-| Carte / accès | oui/non | |
-| Galerie | oui/non | |
-| Multilingue | oui/non | |
-| Blog / actus | oui/non | |
-| Analytics | oui/non | |
+| Contact form | yes/no | <fields, recipient> |
+| Brochure download | yes/no | |
+| Map / access | yes/no | |
+| Gallery | yes/no | |
+| Multilingual | yes/no | |
+| Blog / news | yes/no | |
+| Analytics | yes/no | |
 
 ## Conversion
-<le parcours vers le CTA : où il apparaît, formulation, action déclenchée>
+<the path to the CTA: where it appears, wording, triggered action>
 
-## Contraintes
-<deadline, hébergement, nom de domaine, SEO, RGPD/mentions légales, ton éditorial>
+## Constraints
+<deadline, hosting, domain name, SEO, privacy/legal notices, editorial tone>
 
-## Trous de contenu
-| Contenu manquant | Décision (qui produit / section supprimée) |
+## Content gaps
+| Missing content | Decision (who produces it / section dropped) |
 |---|---|
 
-## Critères de succès
-<observable : le visiteur peut faire X, le site charge en Y, chaque section du périmètre est présente…>
+## Success criteria
+<observable: the visitor can do X, the site loads in Y, every section of the perimeter is present…>

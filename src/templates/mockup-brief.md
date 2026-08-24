@@ -1,33 +1,35 @@
-# Brief de maquette — <projet>
+# Mockup brief — <project>
 
-> Document autonome : tout outil (ou designer) peut produire la maquette à partir de ce seul fichier.
+<!-- Fill in the project language. -->
+
+> Self-contained document: any tool (or designer) can produce the mockup from this file alone.
 
 ## Direction
-<le projet en une ligne + la direction visuelle : invariants des inspirations, ton, ce que la maquette doit dégager>
+<the project in one line + the visual direction: inspiration invariants, tone, what the mockup must convey>
 
 ## Tokens
-<palette hex, typographies (+ substitutions), échelle, espacements, radius — recopiés du design system>
+<hex palette, typefaces (+ substitutions), scale, spacing, radius — copied from the design system>
 
 ## Do / Don't
 - ✅ <…>
 - ❌ <…>
 
-## Frames attendues
-- Desktop 1440 : page complète
-- Mobile 390 : hero + <section représentative>
+## Expected frames
+- Desktop 1440: full page
+- Mobile 390: hero + <representative section>
 
 ---
 
-## Section 1 — <nom>
-- Structure : <résumé du wireframe, hiérarchie, position du CTA>
-- Contenu (verbatim) : <textes réels>
-- Asset : `assets/web/<fichier>.webp` (<dimensions>)
-- Notes : <traitement d'image, motif, comportement mobile>
+## Section 1 — <name>
+- Structure: <wireframe summary, hierarchy, CTA position>
+- Content (verbatim): <real texts>
+- Asset: `assets/web/<file>.webp` (<dimensions>)
+- Notes: <image treatment, motif, mobile behavior>
 
-## Section 2 — <nom>
+## Section 2 — <name>
 …
 
 ---
 
-## Trous de contenu
-<zones à afficher avec la mention TROU DE CONTENU — ne pas inventer>
+## Content gaps
+<zones to display with the CONTENT GAP marker (in the project language) — do not invent>

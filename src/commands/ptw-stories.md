@@ -1,30 +1,30 @@
 ---
-description: User stories visiteur, légères et cohérentes — jamais overkill pour un site vitrine
+description: Lightweight, coherent visitor stories — never overkill for a showcase site
 allowed-tools:
   - Read
   - Write
   - Bash
 ---
-# ptw-stories — Stories visiteur, à l'échelle du projet
+# ptw-stories — Visitor stories, at the project's scale
 
-Utilise ce template comme structure de sortie :
+Use this template as the output structure:
 @templates/stories.md
 
-Fail-closed : docs/prd.md doit exister. Absent → STOP : "Pas de PRD — lance /ptw-brief d'abord."
+Fail-closed: docs/prd.md must exist. Missing → STOP: "No PRD — run /ptw-brief first."
 
-Un site vitrine n'est pas un SaaS : les stories servent à vérifier que chaque section a une raison d'être et un critère de réussite observable, pas à découper du développement. Reste à l'échelle.
+A showcase site is not a SaaS: the stories exist to check that every section has a reason to exist and an observable success criterion, not to slice development work. Stay at scale.
 
-## Règles
-- Une story = un visiteur, un besoin, un critère observable. Format : "En tant que <profil du PRD>, je veux <action> afin de <bénéfice>."
-- 5 à 12 stories maximum. Au-delà, c'est le signe que le PRD a un périmètre flou — retourne le dire plutôt que d'empiler.
-- Chaque story se rattache à une section ou fonctionnalité du PRD. Une story orpheline (aucune section ne la sert) = un trou à signaler. Une section orpheline (aucune story ne la justifie) = un candidat graveyard à signaler.
-- Pas de stories techniques ("en tant que dev…"), pas de stories d'admin sauf si le PRD prévoit un back-office.
-- Ids : `s01-<slug-court>`, réutilisés tels quels partout (wireframe, maquette).
+## Rules
+- One story = one visitor, one need, one observable criterion. Format: "As a <profile from the PRD>, I want <action> so that <benefit>."
+- 5 to 12 stories maximum. Beyond that, it's a sign the PRD perimeter is fuzzy — go say so instead of piling up.
+- Every story attaches to a section or feature of the PRD. An orphan story (no section serves it) = a gap to report. An orphan section (no story justifies it) = a graveyard candidate to report.
+- No technical stories ("as a dev…"), no admin stories unless the PRD includes a back office.
+- Ids: `s01-<short-slug>`, reused verbatim everywhere (wireframe, mockup).
 
-## Déroulé
-1. Lis docs/prd.md (cibles, sections, CTA, fonctionnalités).
-2. Écris les stories, priorisées : celles qui portent le CTA principal d'abord.
-3. Vérifie la couverture dans les deux sens (story ↔ section) et note les écarts dans la section "Écarts" du fichier.
-4. Écris docs/stories.md. Si le projet est un repo git, commite (`docs: stories`).
+## Workflow
+1. Read docs/prd.md (audiences, sections, CTA, features).
+2. Write the stories, prioritized: the ones carrying the primary CTA first.
+3. Check coverage both ways (story ↔ section) and record the gaps in the file's "Gaps" section.
+4. Write docs/stories.md (in the user's language). If the project is a git repo, commit (`docs: stories`).
 
-Termine par : "Stories prêtes dans docs/stories.md (<n> stories). Prochaine étape : /ptw-design-system"
+End with: "Stories ready in docs/stories.md (<n> stories). Next step: /ptw-design-system" (in the user's language).

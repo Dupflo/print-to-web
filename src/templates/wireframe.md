@@ -1,27 +1,29 @@
-# Wireframe — <projet>
+# Wireframe — <project>
 
-Format : <celui du PRD> · <n> sections · CTA principal : <…>
+<!-- Fill in the project language. -->
 
-## Parcours
-<l'ordre des sections et pourquoi — le chemin vers le CTA>
+Format: <the PRD's> · <n> sections · Primary CTA: <…>
+
+## Path
+<the section order and why — the road to the CTA>
 
 ---
 
-## 1. <Section> <!-- story : s0x-… -->
+## 1. <Section> <!-- story: s0x-… -->
 
 ```
 +--------------------------------------------------+
-| <schéma ASCII desktop : blocs, hiérarchie, CTA>  |
+| <ASCII desktop diagram: blocks, hierarchy, CTA>  |
 +--------------------------------------------------+
 ```
 
-**Contenu :**
-| Bloc | Contenu réel (source) | Asset |
+**Content:**
+| Block | Real content (source) | Asset |
 |---|---|---|
-| Titre | "<texte verbatim ou résumé>" (plaquette p.X) | — |
-| Visuel | | <fichier du dossier print> |
+| Title | "<verbatim or summarized text>" (brochure p.X) | — |
+| Visual | | <file from the print folder> |
 
-**Mobile :** <ce qui s'empile, disparaît, se transforme>
+**Mobile:** <what stacks, disappears, transforms>
 
 ---
 
@@ -30,8 +32,8 @@ Format : <celui du PRD> · <n> sections · CTA principal : <…>
 
 ---
 
-## Décisions structurantes
-- <décision prise + alternative écartée, ou question tranchée avec l'utilisateur>
+## Structural decisions
+- <decision made + discarded alternative, or question settled with the user>
 
-## Trous de contenu restants
-- <hérités du PRD, visibles dans le wireframe sous la mention TROU DE CONTENU>
+## Remaining content gaps
+- <inherited from the PRD, visible in the wireframe under the CONTENT GAP marker (in the project language)>

@@ -1,51 +1,51 @@
-# Design System — <projet>
+# Design System — <project>
 
-Sources : <docs/analyse.md + dossier d'inspirations + direction fournie — rien d'inventé>
+<!-- Fill in the project language. Sources: docs/analyse.md + inspirations folder + provided direction — nothing invented. -->
 
 ## Tokens
 ### Palette
-| Token | Hex | Origine (print) | Rôle |
+| Token | Hex | Origin (print) | Role |
 |---|---|---|---|
 | primary | | | |
 | secondary | | | |
 | background | | | |
 | text | | | |
 
-### Typographies
-| Token | Fonte | Statut | Usage |
+### Typefaces
+| Token | Font | Status | Usage |
 |---|---|---|---|
-| heading | | <fonte print / substitution Google Fonts> | |
+| heading | | <print font / Google Fonts substitution> | |
 | body | | | |
 
-Échelle : <h1 … body … small, desktop / mobile>
+Scale: <h1 … body … small, desktop / mobile>
 
-### Espacements, radius, ombres
-- Espacements : <échelle>
-- Radius : <…>
-- Ombres : <…>
+### Spacing, radius, shadows
+- Spacing: <scale>
+- Radius: <…>
+- Shadows: <…>
 
-## Motifs & formes
-<les éléments graphiques issus du print (formes du logo, découpes, filets) et leur usage web autorisé — avec référence aux inspirations>
+## Motifs & shapes
+<the graphic elements taken from the print (logo shapes, cutouts, rules) and their authorized web usage — with references to the inspirations>
 
-## Analyse des inspirations
-- Invariants (présents dans toutes les variantes — non négociables) : <…>
-- Options tranchées : <option retenue + pourquoi>
+## Inspiration analysis
+- Invariants (present in every variant — non-negotiable): <…>
+- Settled options: <chosen option + why>
 
-## Composants
-| Composant | Usage | Variantes |
+## Components
+| Component | Usage | Variants |
 |---|---|---|
 
-## Patterns UI
-- Traitement des images : <plein cadre, formes de découpe, ratio…>
-- Formulaires & états : <…>
-- Responsive : <principes>
+## UI patterns
+- Image treatment: <full-bleed, cutout shapes, ratio…>
+- Forms & states: <…>
+- Responsive: <principles>
 
 ## Do / Don't
 - ✅ <…>
 - ❌ <…>
 
-## Prompts design
-<un prompt autonome par grande section — direction + tokens + contenu réel — prêt à coller dans Claude Design ou Figma. C'est la passerelle vers les outils de maquette.>
+## Design prompts
+<one self-contained prompt per major section — direction + tokens + real content — ready to paste into Claude Design or Figma. This is the bridge to the mockup tools.>
 
 ### <Section>
 ```

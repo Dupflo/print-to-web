@@ -1,15 +1,15 @@
-# Stories — <projet>
+# Stories — <project>
 
-<5 à 12 stories, priorisées, celles qui portent le CTA principal d'abord.>
+<!-- Fill in the project language. 5 to 12 stories, prioritized, those carrying the primary CTA first. -->
 
 ## s01-<slug>
-En tant que <profil du PRD>, je veux <action> afin de <bénéfice>.
-- Section(s) : <section du PRD qui sert cette story>
-- Critère observable : <ce qu'on peut vérifier sur la maquette / le site>
+As a <profile from the PRD>, I want <action> so that <benefit>.
+- Section(s): <PRD section serving this story>
+- Observable criterion: <what can be checked on the mockup / the site>
 
 ## s02-<slug>
 …
 
-## Écarts
-- Stories orphelines (aucune section ne les sert) : <…ou aucune>
-- Sections orphelines (aucune story ne les justifie — candidates graveyard) : <…ou aucune>
+## Gaps
+- Orphan stories (no section serves them): <… or none>
+- Orphan sections (no story justifies them — graveyard candidates): <… or none>

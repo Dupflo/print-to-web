@@ -1,41 +1,43 @@
-# Analyse print — <projet>
+# Print analysis — <project>
 
-## Le projet en une ligne
-<qui, quoi, où — tel que le print le présente>
+<!-- Fill in the project language; translate headings accordingly. -->
 
-## Identité visuelle
+## The project in one line
+<who, what, where — as the print presents it>
+
+## Visual identity
 ### Logos
-| Fichier | Variante | Format | Usage pressenti |
+| File | Variant | Format | Likely usage |
 |---|---|---|---|
-| <logo_x.png> | <couleur / noir / blanc> | <png/svg/pdf> | <header sur fond clair…> |
+| <logo_x.png> | <color / black / white> | <png/svg/pdf> | <header on light background…> |
 
-### Palette (relevée sur le print — hex approximatifs)
-| Couleur | Hex | Où sur le print | Rôle web pressenti |
-|---|---|---|---|
-
-### Typographies
-| Usage print | Fonte identifiée | Libre ? | Équivalent web suggéré |
+### Palette (sampled from the print — approximate hex)
+| Color | Hex | Where on the print | Likely web role |
 |---|---|---|---|
 
-### Motifs & formes graphiques
-<éléments récurrents : formes du logo, découpes, filets, pictos — et comment le print les emploie>
-
-## Structure de contenu
-| # | Section du print | Contenu clé | Reprise web pressentie |
+### Typefaces
+| Print usage | Identified font | Free? | Suggested web equivalent |
 |---|---|---|---|
 
-## Chiffres clés (verbatim)
-<les chiffres exacts du print — surface, dates, capacités…>
+### Motifs & graphic shapes
+<recurring elements: logo shapes, cutouts, rules, pictograms — and how the print uses them>
 
-## Contacts & mentions (verbatim)
-<contacts commerciaux, mentions légales, crédits>
+## Content structure
+| # | Print section | Key content | Likely web reuse |
+|---|---|---|---|
 
-## Inventaire des assets
-| Fichier | Type | Dimensions | Poids | Usage web pressenti |
+## Key figures (verbatim)
+<the print's exact figures — surface, dates, capacities…>
+
+## Contacts & notices (verbatim)
+<sales contacts, legal notices, credits>
+
+## Asset inventory
+| File | Type | Dimensions | Weight | Likely web usage |
 |---|---|---|---|---|
 
-## Recommandation de format web
-**<one page / multipage / one page + annexes>** — <arguments : volume, sections autonomes, cibles, contenus à cycle de vie propre>
+## Web format recommendation
+**<one page / multipage / one page + annexes>** — <arguments: volume, self-standing sections, audiences, content with its own lifecycle>
 
-## Trous & questions ouvertes
-- <contenu absent du print qu'un site attend d'habitude — à trancher dans /ptw-brief>
+## Gaps & open questions
+- <content missing from the print that a site usually expects — to settle in /ptw-brief>

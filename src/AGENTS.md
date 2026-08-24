@@ -1,64 +1,67 @@
-# print-to-web — Règles du repo
+# print-to-web — Repo rules
 
-## Règle absolue
-Pas de maquette ni de génération visuelle en direct. Tout projet print → web passe par le pipeline, dans l'ordre :
+## Absolute rule
+No mockup and no visual generation outside the pipeline. Every print → web project goes through it, in order:
 
-Analyse → Brief (PRD) → Stories → Design System → Wireframe → Assets → Maquette → (bonus : HTML)
+Analyze → Brief (PRD) → Stories → Design System → Wireframe → Assets → Mockup → (bonus: HTML)
 
-Aucune maquette n'est générée avant que le PRD soit validé (`docs/prd.md` → frontmatter `validated: yes`) et que le design system existe. Aucune identité visuelle n'est inventée : elle est extraite des documents print et des inspirations fournies.
+No mockup is generated before the PRD is validated (`docs/prd.md` → frontmatter `validated: yes`) and the design system exists. No visual identity is ever invented: it is extracted from the print documents and the provided inspirations.
 
-## Pipeline (commandes)
-- `/ptw-analyze <dossier>`  analyse le dossier print : inventaire des assets, identité visuelle, structure de contenu, recommandation de format web
-- `/ptw-brief`              questionnaire en une passe → PRD : objectif, format validé, périmètre, fonctionnalités, contraintes
-- `/ptw-stories`            user stories visiteur, légères — jamais overkill
-- `/ptw-design-system`      design system markdown : tokens extraits du print + analyse des inspirations + prompts design
-- `/ptw-wireframe`          wireframe maison en markdown/ASCII, mappé sur le contenu réel
-- `/ptw-assets`             optimisation des images : resize + WebP sans dégradation visible, originaux intacts
-- `/ptw-mockup`             maquette — Figma via MCP (défaut) ou Claude Design, à partir du brief de maquette
-- `/ptw-html`               bonus : prototype HTML/CSS statique navigable
+## Language
+Instructions are in English; the user is not. Speak to the user and write the content of every `docs/` file in the language of the print documents (or the user's language if they differ — ask once if ambiguous). When filling a template for a non-English project, translate its section headings into the project language. Verbatim quotes from the print stay verbatim.
 
-Utilitaires :
-- `/ptw`         orchestrateur : enchaîne tout le pipeline avec checkpoints humains
-- `/ptw-status`  état du projet dérivé des fichiers, prochaine commande
-- `/ptw-help`    carte du pipeline (antisèche)
+## Pipeline (commands)
+- `/ptw-analyze <folder>`   analyze the print folder: asset inventory, visual identity, content structure, recommended web format
+- `/ptw-brief`              one-pass framing questionnaire → PRD: goal, validated format, perimeter, features, constraints
+- `/ptw-stories`            lightweight visitor stories — never overkill
+- `/ptw-design-system`      markdown design system: tokens extracted from print + inspiration analysis + design prompts
+- `/ptw-wireframe`          homemade markdown/ASCII wireframe, mapped to real content
+- `/ptw-assets`             image optimization: resize + WebP with no visible degradation, originals untouched
+- `/ptw-mockup`             mockup — Figma via MCP (default) or Claude Design, from the mockup brief
+- `/ptw-html`               bonus: navigable static HTML/CSS prototype
 
-## Gates (mécaniques, fail-closed)
-- `/ptw-brief` refuse de tourner sans `docs/analyse.md` — le questionnaire doit être éclairé par l'analyse.
-- `/ptw-design-system` refuse de tourner sans `docs/analyse.md` ET sans source visuelle (identité print ou dossier d'inspirations). Interdiction absolue d'inventer une identité par défaut.
-- `/ptw-wireframe` refuse de tourner sans `docs/prd.md`.
-- `/ptw-mockup` refuse de tourner si `docs/prd.md` ne contient pas `validated: yes` dans son frontmatter, ou si `docs/design-system.md` ou `docs/wireframe.md` manquent. Pas de fichier, pas de marqueur → pas de maquette. Aucune exception.
-- Le marqueur `validated: yes` est posé uniquement par la validation humaine explicite (checkpoint AskUserQuestion de /ptw-brief ou de l'orchestrateur), jamais par la simple existence du fichier.
+Utilities:
+- `/ptw`         orchestrator: runs the whole pipeline with human checkpoints
+- `/ptw-status`  project state derived from the files, next command
+- `/ptw-help`    pipeline map (cheat sheet)
 
-## Contenu
-- Tout texte de la maquette vient des documents print analysés ou a été validé par l'utilisateur. Lorem ipsum interdit. Un contenu manquant = un "trou de contenu" signalé dans docs/analyse.md ou docs/prd.md, jamais comblé en freestyle.
-- Les chiffres, contacts et mentions légales sont recopiés verbatim depuis le print — jamais reformulés de mémoire.
+## Gates (mechanical, fail-closed)
+- `/ptw-brief` refuses to run without `docs/analyse.md` — the questionnaire must be informed by the analysis.
+- `/ptw-design-system` refuses to run without `docs/analyse.md` AND without a visual source (print identity or inspirations folder). Inventing a default identity is absolutely forbidden.
+- `/ptw-wireframe` refuses to run without `docs/prd.md`.
+- `/ptw-mockup` refuses to run if `docs/prd.md` does not contain `validated: yes` in its frontmatter, or if `docs/design-system.md` or `docs/wireframe.md` are missing. No file, no marker → no mockup. No exceptions.
+- The `validated: yes` marker is set only by an explicit human validation (AskUserQuestion checkpoint in /ptw-brief or the orchestrator), never by the mere existence of the file.
+
+## Content
+- Every piece of text in the mockup comes from the analyzed print documents or has been validated by the user. Lorem ipsum is forbidden. Missing content = a "content gap" reported in docs/analyse.md or docs/prd.md, never filled freestyle.
+- Figures, contacts and legal notices are copied verbatim from the print — never rephrased from memory.
 
 ## Design
-- L'identité visuelle (palette, typographies, formes) est extraite des documents print (logo, plaquette) et complétée par les inspirations fournies. `docs/design-system.md` est l'unique référence visuelle ; la maquette et le HTML n'utilisent que ses tokens.
-- Un besoin non couvert par le design system = un "gap" à signaler, jamais à combler en inventant.
-- Les prompts design (section dédiée du design system) sont la passerelle vers Claude Design / Figma : autonomes, ils contiennent tokens + direction + contenus.
+- The visual identity (palette, typefaces, shapes) is extracted from the print documents (logo, brochure) and completed by the provided inspirations. `docs/design-system.md` is the single visual reference; the mockup and the HTML use only its tokens.
+- A need the system doesn't cover = a "gap" to report, never to fill by inventing.
+- The design prompts (dedicated section of the design system) are the bridge to Claude Design / Figma: self-contained, they carry tokens + direction + real content.
 
 ## Assets
-- Les fichiers originaux du dossier print ne sont JAMAIS modifiés ni déplacés.
-- Les images optimisées vivent dans `assets/web/`, avec un manifeste `docs/assets.md` (original → optimisé, dimensions, poids, usage).
-- La maquette et le HTML référencent les assets optimisés, jamais les originaux.
+- The original files in the print folder are NEVER modified, moved or renamed.
+- Optimized images live in `assets/web/`, with a manifest `docs/assets.md` (original → optimized, dimensions, weight, usage).
+- The mockup and the HTML reference the optimized assets, never the originals.
 
-## Données & cycle de vie des docs
-Toutes les données du pipeline vivent en markdown sous docs/, versionnées par git quand le projet est un repo. Pas de base, pas de fichier d'état : l'état se dérive des fichiers (l'analyse est faite si docs/analyse.md existe, le PRD est validé si son frontmatter dit `validated: yes`) — un état dérivé ne périme pas.
+## Data & docs lifecycle
+All pipeline data lives in markdown files under docs/, versioned by git when the project is a repo. No database, no state file: the state is derived from the files (the analysis is done if docs/analyse.md exists, the PRD is validated if its frontmatter says `validated: yes`) — a derived state can't go stale.
 
-- docs/analyse.md — inventaire + identité + structure + recommandation de format
-- docs/prd.md — périmètre du site (frontmatter `validated: yes|no`)
-- docs/stories.md — user stories visiteur
-- docs/design-system.md — tokens, composants, patterns, prompts design
-- docs/wireframe.md — wireframe sections desktop + notes mobile
-- docs/assets.md — manifeste des images optimisées
-- docs/mockup-brief.md — brief de maquette autonome (écrit par /ptw-mockup avant toute génération)
+- docs/analyse.md — inventory + identity + structure + format recommendation
+- docs/prd.md — site perimeter (frontmatter `validated: yes|no`)
+- docs/stories.md — visitor stories
+- docs/design-system.md — tokens, components, patterns, design prompts
+- docs/wireframe.md — desktop sections wireframe + mobile notes
+- docs/assets.md — optimized images manifest
+- docs/mockup-brief.md — self-contained mockup brief (written by /ptw-mockup before any generation)
 
-Si le projet est un repo git, chaque doc est commité à la fin de sa phase (`docs: <phase>`). Sinon, les fichiers suffisent.
+If the project is a git repo, each doc is committed at the end of its phase (`docs: <phase>`). Otherwise the files are enough.
 
-## Definition of Done (par projet)
-- PRD validé par l'humain, périmètre et graveyard explicites
-- Design system ancré dans l'identité print réelle (zéro token inventé)
-- Wireframe mappé sur du contenu réel (zéro lorem)
-- Assets optimisés WebP avec manifeste
-- Maquette livrée (lien Figma ou sortie Claude Design) + brief de maquette réutilisable
+## Definition of Done (per project)
+- PRD validated by the human, perimeter and graveyard explicit
+- Design system anchored in the real print identity (zero invented token)
+- Wireframe mapped to real content (zero lorem)
+- WebP-optimized assets with manifest
+- Mockup delivered (Figma link or Claude Design output) + reusable mockup brief

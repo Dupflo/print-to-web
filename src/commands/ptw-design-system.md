@@ -1,6 +1,6 @@
 ---
-description: Design system markdown — tokens extraits de l'identité print, analyse des inspirations visuelles, prompts design prêts pour Claude Design / Figma
-argument-hint: (optionnel) chemin du dossier d'inspirations
+description: Markdown design system — tokens extracted from the print identity, inspiration analysis, design prompts ready for Claude Design / Figma
+argument-hint: (optional) path to the inspirations folder
 allowed-tools:
   - Read
   - Glob
@@ -8,35 +8,35 @@ allowed-tools:
   - Bash
   - AskUserQuestion
 ---
-# ptw-design-system — L'identité print traduite en système web
+# ptw-design-system — The print identity translated into a web system
 
-Utilise ce template comme structure de sortie :
+Use this template as the output structure:
 @templates/design-system.md
 
-## Contrat d'exécution (non négociable)
-Il t'est INTERDIT de :
-- Inventer une identité visuelle à partir de rien.
-- Produire un design system générique par défaut (couleurs au hasard, composants imaginaires).
+## Execution contract (non-negotiable)
+You are FORBIDDEN from:
+- Inventing a visual identity from nothing.
+- Producing a generic default design system (random colors, imaginary components).
 
-Fail-closed : docs/analyse.md doit exister (l'identité print y est décrite). Absent → STOP : "Pas d'analyse — lance /ptw-analyze d'abord." Si l'analyse n'a extrait aucune identité exploitable ET qu'aucun dossier d'inspirations n'est fourni → STOP, demande la source visuelle.
+Fail-closed: docs/analyse.md must exist (the print identity is described there). Missing → STOP: "No analysis — run /ptw-analyze first." If the analysis extracted no usable identity AND no inspirations folder is provided → STOP, ask for the visual source.
 
-## Déroulé
+## Workflow
 
-### Étape 1 — Rassembler les sources
-1. L'identité print : palette, typographies, formes et motifs relevés dans docs/analyse.md. Revérifie les hex sur les fichiers sources (logo) si un doute existe.
-2. Les inspirations : $ARGUMENTS, ou un dossier `inspirations/` s'il existe, ou demande. Lis chaque image et décris ce qu'elle établit : structure du hero, traitement des images (formes organiques, plein cadre…), rôle des motifs du logo dans le layout, ton général. Si plusieurs variantes coexistent, relève ce qu'elles ont en commun (les invariants) et ce qui les distingue (les options ouvertes) — et fais trancher les options ouvertes via AskUserQuestion.
-3. Le PRD s'il existe : ton éditorial et device prioritaire influencent les choix (échelle typographique, densité).
+### Step 1 — Gather the sources
+1. The print identity: palette, typefaces, shapes and motifs recorded in docs/analyse.md. Re-check the hex values against the source files (logo) if in doubt.
+2. The inspirations: $ARGUMENTS, or an `inspirations/` folder if it exists, or ask. Read each image and describe what it establishes: hero structure, image treatment (organic shapes, full-bleed…), the role of the logo's motifs in the layout, overall tone. If several variants coexist, record what they share (the invariants) and what sets them apart (the open options) — and have the user settle the open options via AskUserQuestion.
+3. The PRD if it exists: editorial tone and priority device influence the choices (type scale, density).
 
-### Étape 2 — Structurer
-Remplis le template :
-- Tokens : palette (hex, rôles primaire/secondaire/fond/texte), typographies web (fonte réelle si libre, sinon équivalent Google Fonts marqué "substitution"), échelle typographique, espacements, radius, ombres.
-- Motifs & formes : les éléments graphiques issus du print (formes du logo, découpes, filets) et leur usage web autorisé.
-- Composants : uniquement ceux que le wireframe/PRD réclament (boutons, carte chiffre-clé, carte contact, nav, footer…). Nom + usage + variantes.
-- Patterns UI : traitement des images, états des formulaires, responsive.
-- Do / Don't : ce que les inspirations et le print imposent ou excluent.
-- **Prompts design** : pour chaque grande section du site, un prompt autonome (direction + tokens + contenu réel) prêt à coller dans Claude Design ou Figma Make. C'est la passerelle vers les outils de maquette.
+### Step 2 — Structure
+Fill the template:
+- Tokens: palette (hex, primary/secondary/background/text roles), web typefaces (the real font if free, otherwise a Google Fonts equivalent marked "substitution"), type scale, spacing, radius, shadows.
+- Motifs & shapes: the graphic elements taken from the print (logo shapes, cutouts, rules) and their authorized web usage.
+- Components: only the ones the wireframe/PRD calls for (buttons, key-figure card, contact card, nav, footer…). Name + usage + variants.
+- UI patterns: image treatment, form states, responsive.
+- Do / Don't: what the inspirations and the print impose or exclude.
+- **Design prompts**: for each major section of the site, a self-contained prompt (direction + tokens + real content) ready to paste into Claude Design or Figma Make. This is the bridge to the mockup tools.
 
-### Étape 3 — Écriture
-Écris docs/design-system.md — l'unique référence visuelle du projet, consommée par /ptw-wireframe, /ptw-mockup et /ptw-html. Si le projet est un repo git, commite (`docs: design system`).
+### Step 3 — Write
+Write docs/design-system.md (in the user's language) — the project's single visual reference, consumed by /ptw-wireframe, /ptw-mockup and /ptw-html. If the project is a git repo, commit (`docs: design system`).
 
-Termine par : "Design system capturé dans docs/design-system.md. Prochaine étape : /ptw-wireframe"
+End with: "Design system captured in docs/design-system.md. Next step: /ptw-wireframe" (in the user's language).

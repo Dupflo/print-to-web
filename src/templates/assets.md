@@ -1,13 +1,15 @@
-# Assets web — <projet>
+# Web assets — <project>
 
-Outil d'encodage : <cwebp / imagemagick / sips> · Gain total : <x> Mo → <y> Mo (−<z> %)
+<!-- Fill in the project language. -->
 
-| Original | Optimisé (assets/web/) | Dimensions | Avant | Après | Usage (section) |
+Encoder: <cwebp / imagemagick / sips> · Total gain: <x> MB → <y> MB (−<z>%)
+
+| Original | Optimized (assets/web/) | Dimensions | Before | After | Usage (section) |
 |---|---|---|---|---|---|
 
-## Non optimisés (hors périmètre wireframe)
-<fichiers du dossier print laissés de côté, et pourquoi>
+## Not optimized (outside the wireframe perimeter)
+<print folder files left aside, and why>
 
 ## Notes
-- <ex. logo : vecteur disponible dans <fichier>, à privilégier à l'intégration>
-- <ex. plan_3.png : qualité 90 pour garder le texte net>
+- <e.g. logo: vector available in <file>, to prefer at integration time>
+- <e.g. floor_plan_3.png: quality 90 to keep the text sharp>

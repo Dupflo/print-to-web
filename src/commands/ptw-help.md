@@ -1,36 +1,36 @@
 ---
-description: Carte du pipeline print-to-web — antisèche
+description: Print-to-web pipeline map — cheat sheet
 ---
-# ptw-help — La carte du pipeline
+# ptw-help — The pipeline map
 
-Affiche exactement ceci (adapte seulement la dernière ligne à l'état réel si docs/ existe) :
+Print exactly this (translated into the user's language; only adapt the last line to the real state if docs/ exists):
 
 ```
-print-to-web — d'un document print à une maquette web
+print-to-web — from a print document to a web mockup
 
-  /ptw <dossier>          tout le pipeline, avec checkpoints humains
+  /ptw <folder>           the whole pipeline, with human checkpoints
 
-  ou phase par phase :
-  1. /ptw-analyze <dossier>   analyse la plaquette, les logos, les photos
-                              → docs/analyse.md + format recommandé
-  2. /ptw-brief               LE questionnaire (une seule passe) → PRD validé
+  or phase by phase:
+  1. /ptw-analyze <folder>    analyze the brochure, logos, photos
+                              → docs/analyse.md + recommended format
+  2. /ptw-brief               THE questionnaire (one single pass) → validated PRD
                               → docs/prd.md
-  3. /ptw-stories             5-12 stories visiteur, jamais overkill
+  3. /ptw-stories             5-12 visitor stories, never overkill
                               → docs/stories.md
-  4. /ptw-design-system       identité print + inspirations → tokens + prompts design
+  4. /ptw-design-system       print identity + inspirations → tokens + design prompts
                               → docs/design-system.md
-  5. /ptw-wireframe           squelette ASCII avec le vrai contenu, zéro lorem
+  5. /ptw-wireframe           ASCII skeleton with real content, zero lorem
                               → docs/wireframe.md
-  6. /ptw-assets              resize + WebP sans dégrader, originaux intacts
+  6. /ptw-assets              resize + WebP without degrading, originals untouched
                               → assets/web/ + docs/assets.md
-  7. /ptw-mockup              maquette Figma (MCP) ou Claude Design
-                              → docs/mockup-brief.md + fichier Figma
-  8. /ptw-html                bonus : prototype navigable → site/index.html
+  7. /ptw-mockup              Figma mockup (MCP) or Claude Design
+                              → docs/mockup-brief.md + Figma file
+  8. /ptw-html                bonus: navigable prototype → site/index.html
 
-  /ptw-status             où en est le projet, prochaine commande
+  /ptw-status             where the project stands, next command
 
-Gates : pas de brief sans analyse · pas de maquette sans PRD validé
-        ni design system · identité jamais inventée · lorem interdit
+Gates: no brief without analysis · no mockup without a validated PRD
+       and a design system · identity never invented · lorem forbidden
 ```
 
-Termine par la prochaine commande utile pour CE projet (via l'état des docs), ou "/ptw-analyze <dossier>" si rien n'a démarré.
+End with the next useful command for THIS project (from the docs state), or "/ptw-analyze <folder>" if nothing has started.

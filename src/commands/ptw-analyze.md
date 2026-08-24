@@ -1,6 +1,6 @@
 ---
-description: Analyser le dossier print (plaquette, flyers, logos, photos) — inventaire des assets, identité visuelle, structure de contenu, recommandation de format web
-argument-hint: <chemin du dossier print>
+description: Analyze the print folder (brochure, flyers, logos, photos) — asset inventory, visual identity, content structure, recommended web format
+argument-hint: <path to the print folder>
 allowed-tools:
   - Read
   - Glob
@@ -8,32 +8,34 @@ allowed-tools:
   - Write
   - AskUserQuestion
 ---
-# ptw-analyze — Analyse du dossier print
+# ptw-analyze — Print folder analysis
 
-Dossier à analyser : $ARGUMENTS (si vide, demande le chemin — ne devine jamais).
+Folder to analyze: $ARGUMENTS (if empty, ask for the path — never guess).
 
-Utilise ce template comme structure de sortie :
+Use this template as the output structure:
 @templates/analyse.md
 
-Cette commande ne pose PAS les questions de cadrage (c'est /ptw-brief). Elle produit les faits qui rendront le questionnaire intelligent : ce que contient le dossier, l'identité visuelle réelle, le volume de contenu, et une recommandation de format argumentée.
+This command does NOT ask the framing questions (that's /ptw-brief). It produces the facts that will make the questionnaire smart: what the folder contains, the real visual identity, the content volume, and an argued format recommendation.
 
-## Déroulé
+Reminder (repo rules): talk to the user and write docs/analyse.md in the language of the print documents. Verbatim quotes stay verbatim.
 
-### Étape 1 — Inventaire
-Liste récursivement le dossier (ignore .DS_Store). Classe chaque fichier : plaquette/brochure (PDF), logo (et ses variantes), perspective/visuel 3D, photo, plan, carte de visite, autre. Relève dimensions et poids (`sips -g pixelWidth -g pixelHeight` ou équivalent, en lecture seule).
+## Workflow
 
-### Étape 2 — Lecture du contenu
-- Lis la plaquette page par page (Read gère les PDF ; PDF > 10 pages : lis par tranches via `pages`). Si la lecture PDF échoue, extrais le texte autrement (markitdown, `sips` page 1) et signale la limite.
-- Regarde les images clés (logos, une perspective, un échantillon de photos) pour juger leur usage web pressenti et leur qualité.
-- Reconstitue la structure éditoriale : sections de la plaquette, messages clés, chiffres, contacts, mentions légales. Les chiffres et contacts sont recopiés verbatim.
+### Step 1 — Inventory
+List the folder recursively (ignore .DS_Store). Classify each file: brochure (PDF), logo (and its variants), perspective/3D visual, photo, floor plan, business card, other. Record dimensions and weight (`sips -g pixelWidth -g pixelHeight` or equivalent, read-only).
 
-### Étape 3 — Identité visuelle
-Extrais du logo et de la plaquette : palette (hex approximatifs, en le disant), typographies identifiables (+ équivalent web plausible si la fonte print n'est pas libre — marqué "à confirmer"), formes et motifs graphiques récurrents (ex. les branches d'un logo réutilisées en éléments de layout). Tu constates, tu n'inventes rien.
+### Step 2 — Content reading
+- Read the brochure page by page (Read handles PDFs; PDF > 10 pages: read in slices via `pages`). If PDF reading fails, extract the text another way (markitdown, `sips` page 1) and report the limitation.
+- Look at the key images (logos, one perspective, a sample of photos) to judge their likely web usage and quality.
+- Reconstruct the editorial structure: brochure sections, key messages, figures, contacts, legal notices. Figures and contacts are copied verbatim.
 
-### Étape 4 — Recommandation de format
-Propose one page / multipage / one page + pages annexes, argumentée par : volume de contenu réel, nombre de sections autonomes, cibles pressenties, présence de contenus à cycle de vie propre (actualités, catalogue). C'est une recommandation — la décision se prend dans /ptw-brief.
+### Step 3 — Visual identity
+Extract from the logo and the brochure: palette (approximate hex values, saying so), identifiable typefaces (+ a plausible web equivalent if the print font isn't free — marked "to confirm"), recurring shapes and graphic motifs (e.g. the branches of a logo reused as layout elements). You observe, you invent nothing.
 
-### Étape 5 — Écriture
-Remplis chaque section du template. Les trous de contenu (pas de photo d'équipe, pas de texte "à propos", contact incomplet…) vont dans "Trous & questions ouvertes" — jamais comblés en freestyle. Écris docs/analyse.md. Si le projet est un repo git, commite (`docs: analyse`).
+### Step 4 — Format recommendation
+Propose one page / multipage / one page + annex pages, argued from: real content volume, number of self-standing sections, likely audiences, presence of content with its own lifecycle (news, catalog). It is a recommendation — the decision is made in /ptw-brief.
 
-Termine par : "Analyse prête dans docs/analyse.md. Format recommandé : <format>. Prochaine étape : /ptw-brief"
+### Step 5 — Write
+Fill every section of the template. Content gaps (no team photo, no "about" text, incomplete contact…) go into "Gaps & open questions" — never filled freestyle. Write docs/analyse.md. If the project is a git repo, commit (`docs: analyse`).
+
+End with: "Analysis ready in docs/analyse.md. Recommended format: <format>. Next step: /ptw-brief" (in the user's language).

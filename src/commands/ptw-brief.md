@@ -1,38 +1,40 @@
 ---
-description: Questionnaire de cadrage en une passe → PRD — objectif du site, format validé, périmètre, fonctionnalités, contraintes
-argument-hint: (optionnel) précisions du client déjà connues
+description: One-pass framing questionnaire → PRD — site goal, validated format, perimeter, features, constraints
+argument-hint: (optional) client details already known
 allowed-tools:
   - Read
   - Write
   - Bash
   - AskUserQuestion
 ---
-# ptw-brief — Le questionnaire qui fixe le périmètre
+# ptw-brief — The questionnaire that locks the perimeter
 
-Utilise ce template comme structure de sortie :
+Use this template as the output structure:
 @templates/prd.md
 
-Fail-closed : docs/analyse.md doit exister. Absent → STOP : "Pas d'analyse — le pipeline commence par /ptw-analyze <dossier>. Le questionnaire doit être éclairé par ce que contient réellement le dossier print."
+Fail-closed: docs/analyse.md must exist. Missing → STOP: "No analysis — the pipeline starts with /ptw-analyze <folder>. The questionnaire must be informed by what the print folder actually contains."
 
-Le but de tout le plugin est ici : poser les bonnes questions EN UNE FOIS pour que le designer/développeur ne revienne pas vers le client à chaque phase. Chaque question s'appuie sur l'analyse — jamais de question dont la réponse est déjà dans docs/analyse.md.
+The whole point of the plugin lives here: ask the right questions IN ONE PASS so the designer/developer never goes back to the client at every phase. Every question builds on the analysis — never ask something already answered in docs/analyse.md.
 
-## Déroulé
+Reminder (repo rules): questions and docs/prd.md are written in the user's language.
 
-### Étape 1 — Relire l'analyse
-Lis docs/analyse.md : recommandation de format, sections détectées, trous de contenu, contexte fourni en $ARGUMENTS. C'est ta matière première pour formuler des questions concrètes ("La plaquette contient X — on le garde ?" plutôt que "Que voulez-vous ?").
+## Workflow
 
-### Étape 2 — Le questionnaire (AskUserQuestion, groupé, une seule passe)
-Couvre ces axes — reformule chaque question avec les éléments concrets de l'analyse :
-1. **Objectif & conversion** : à quoi sert le site (générer des leads, informer, crédibiliser, vendre) ? Quel est LE CTA principal (formulaire, téléphone, téléchargement de la plaquette, prise de RDV) ?
-2. **Format** : présente la recommandation de l'analyse avec ses arguments, en option recommandée. L'utilisateur valide ou corrige. C'est ici que le format se décide, pas avant.
-3. **Périmètre de contenu** : parmi les sections détectées dans la plaquette, lesquelles passent au web, lesquelles vont au graveyard ? Y a-t-il du contenu web qui n'existe pas dans le print (à produire — trou de contenu) ?
-4. **Fonctionnalités** : formulaire de contact, carte interactive, galerie, téléchargement de la plaquette, multilingue, blog/actus, analytics. Coche ce qui est dans le périmètre — le reste est explicitement dehors.
-5. **Contraintes & contexte** : deadline, hébergement/nom de domaine, exigences SEO, RGPD/mentions légales, ton éditorial (institutionnel, chaleureux, technique…), device prioritaire (desktop/mobile).
-Les trous de contenu identifiés dans l'analyse sont soumis à l'utilisateur : qui produit le contenu manquant, ou la section saute-t-elle ?
+### Step 1 — Re-read the analysis
+Read docs/analyse.md: format recommendation, detected sections, content gaps, plus any context given in $ARGUMENTS. This is your raw material for concrete questions ("The brochure contains X — do we keep it?" rather than "What do you want?").
 
-### Étape 3 — Écriture et validation
-1. Remplis chaque section du template avec les réponses. Ne remplis rien que l'utilisateur n'a pas validé. Le graveyard est exhaustif — c'est lui qui tue le scope creep.
-2. Présente le résumé du PRD (format, sections, CTA, fonctionnalités, graveyard) et demande via AskUserQuestion : "Valider ce PRD ?" — options : Valider / Modifier. Sur Valider, écris `validated: yes` dans le frontmatter. Sinon, itère — le marqueur reste `no`.
-3. Écris docs/prd.md. Si le projet est un repo git, commite (`docs: prd`).
+### Step 2 — The questionnaire (AskUserQuestion, grouped, one single pass)
+Cover these axes — rephrase each question with the concrete elements from the analysis:
+1. **Goal & conversion**: what is the site for (generating leads, informing, building credibility, selling)? What is THE primary CTA (form, phone, brochure download, appointment booking)?
+2. **Format**: present the analysis recommendation with its arguments, as the recommended option. The user validates or corrects. The format is decided here, not before.
+3. **Content perimeter**: among the sections detected in the brochure, which ones go to the web, which go to the graveyard? Is there web content that doesn't exist in print (to produce — content gap)?
+4. **Features**: contact form, interactive map, gallery, brochure download, multilingual, blog/news, analytics. Check what's in the perimeter — everything else is explicitly out.
+5. **Constraints & context**: deadline, hosting/domain name, SEO requirements, privacy/legal notices, editorial tone (institutional, warm, technical…), priority device (desktop/mobile).
+The content gaps identified in the analysis are submitted to the user: who produces the missing content, or does the section get dropped?
 
-Termine par : "PRD validé dans docs/prd.md. Prochaine étape : /ptw-stories (ou /ptw-design-system si tu sautes les stories)"
+### Step 3 — Write and validate
+1. Fill every section of the template with the answers. Fill nothing the user hasn't validated. The graveyard is exhaustive — it is what kills scope creep.
+2. Present the PRD summary (format, sections, CTA, features, graveyard) and ask via AskUserQuestion: "Validate this PRD?" — options: Validate / Modify. On Validate, write `validated: yes` in the frontmatter. Otherwise iterate — the marker stays `no`.
+3. Write docs/prd.md. If the project is a git repo, commit (`docs: prd`).
+
+End with: "PRD validated in docs/prd.md. Next step: /ptw-stories (or /ptw-design-system if you skip stories)" (in the user's language).

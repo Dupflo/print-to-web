@@ -218,6 +218,7 @@ votre-projet/
 2. **L'agent constate, l'humain tranche.** Recommandation de format, direction visuelle, outil de maquette : trois checkpoints, trois vraies décisions humaines.
 3. **Rien d'inventé.** Ni couleur, ni fonte, ni texte. Ce qui manque est un `TROU DE CONTENU` assumé — une information pour le client, pas un défaut à masquer.
 4. **L'état vit dans les fichiers.** Markdown sous `docs/`, versionné si le projet est un repo git. Un état dérivé ne périme pas.
+5. **Instructions en anglais, sorties dans votre langue.** Les commandes et règles (`src/`) sont en anglais — la norme de l'écosystème, et le plus fiable pour les modèles. Mais l'agent vous parle et écrit les `docs/` dans la langue de vos documents print : plaquette française → PRD, wireframe et maquette en français.
 
 ## Contribuer
 

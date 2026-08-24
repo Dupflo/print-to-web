@@ -66,8 +66,8 @@ function codexSkillFromCommand(name, text, outSkillsDir) {
   // SKILL.md : frontmatter open-standard (name + description) + corps transformé.
   const skillFm = `---\nname: ${name}\ndescription: ${description}\n---\n`;
   const preamble =
-    `> Commande print-to-web, émise pour Codex. Lance-la explicitement. ` +
-    `Les gates fichiers (frontmatter validated, docs manquants) sont inchangés.\n\n`;
+    `> print-to-web command, emitted for Codex. Run it explicitly. ` +
+    `The file gates (validated frontmatter, missing docs) are unchanged.\n\n`;
   writeFileSync(join(skillDir, "SKILL.md"), skillFm + preamble + derefInjections(body));
 
   // agents/openai.yaml : l'interface /ptw-*.

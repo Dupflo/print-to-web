@@ -1,27 +1,27 @@
 ---
-description: État du projet print → web dérivé des fichiers — phases faites, prochaine commande
+description: Print → web project state derived from the files — completed phases, next command
 allowed-tools:
   - Read
   - Glob
   - Grep
   - Bash
 ---
-# ptw-status — Où en est le projet
+# ptw-status — Where the project stands
 
-Dérive l'état des fichiers — ne devine jamais. Bash uniquement en lecture.
+Derive the state from the files — never guess. Bash is read-only here. Report in the user's language.
 
-1. Vérifie l'existence de chaque doc du pipeline, dans l'ordre :
-   - docs/analyse.md (+ le format recommandé, grep "Recommandation")
-   - docs/prd.md (+ frontmatter : `validated: yes|no` — un PRD non validé bloque la maquette)
-   - docs/stories.md (+ nombre de stories)
+1. Check the existence of each pipeline doc, in order:
+   - docs/analyse.md (+ the recommended format, grep the recommendation section)
+   - docs/prd.md (+ frontmatter: `validated: yes|no` — an unvalidated PRD blocks the mockup)
+   - docs/stories.md (+ story count)
    - docs/design-system.md
-   - docs/wireframe.md (+ nombre de sections)
-   - docs/assets.md (+ compter les fichiers dans assets/web/)
-   - docs/mockup-brief.md (+ le lien Figma s'il y est)
-   - site/index.html (bonus HTML)
-2. Affiche un tableau compact : phase | état (✓ / — / bloqué) | détail. La première phase manquante est la prochaine étape ; une phase présente mais dont le gate amont a régressé (ex. PRD repassé `validated: no`) est marquée "bloqué".
-3. Relève les `TROU DE CONTENU` encore présents (grep dans docs/) — c'est la liste de ce que le client doit encore fournir.
+   - docs/wireframe.md (+ section count)
+   - docs/assets.md (+ count the files in assets/web/)
+   - docs/mockup-brief.md (+ the Figma link if present)
+   - site/index.html (HTML bonus)
+2. Print a compact table: phase | state (✓ / — / blocked) | detail. The first missing phase is the next step; a phase that exists but whose upstream gate regressed (e.g. PRD back to `validated: no`) is marked "blocked".
+3. List the `CONTENT GAP` markers still present (grep docs/, in whatever language the docs use) — that's the list of what the client still owes.
 
-Si docs/ n'existe pas : le projet n'a pas démarré — pointe /ptw-analyze <dossier> (ou /ptw <dossier> pour tout enchaîner).
+If docs/ doesn't exist: the project hasn't started — point to /ptw-analyze <folder> (or /ptw <folder> to chain everything).
 
-Termine par la commande la plus utile maintenant, ex. : "Next : /ptw-wireframe".
+End with the single most useful command right now, e.g.: "Next: /ptw-wireframe".

@@ -1,5 +1,5 @@
 ---
-description: Bonus — prototype HTML/CSS statique navigable, ancré sur le design system et les assets optimisés
+description: Bonus — navigable static HTML/CSS prototype, anchored on the design system and the optimized assets
 allowed-tools:
   - Read
   - Glob
@@ -7,22 +7,22 @@ allowed-tools:
   - Edit
   - Bash
 ---
-# ptw-html — Le prototype qui se visite
+# ptw-html — The prototype you can visit
 
-Fail-closed : docs/design-system.md et docs/wireframe.md doivent exister. Manquant → STOP en pointant la commande. docs/mockup-brief.md est la meilleure source s'il existe (il compile déjà tout) ; sinon compose depuis design-system + wireframe + assets.
+Fail-closed: docs/design-system.md and docs/wireframe.md must exist. Missing → STOP pointing to the command. docs/mockup-brief.md is the best source if it exists (it already compiles everything); otherwise compose from design-system + wireframe + assets.
 
-Le prototype est une référence navigable pour le client et une base de départ pour le dev — pas le site de production. Reste statique et simple.
+The prototype is a navigable reference for the client and a starting point for the developer — not the production site. Stay static and simple.
 
-## Règles
-- HTML sémantique (header/nav/main/section/footer), un fichier `site/index.html` + `site/styles.css` (+ `site/script.js` seulement si une interaction du PRD l'exige — menu mobile, galerie). Pas de framework, pas de build.
-- Tous les tokens (couleurs, fontes, espacements, radius) viennent de docs/design-system.md, déclarés en variables CSS. Zéro valeur inventée. Fontes : Google Fonts si le design system prévoit une substitution libre, sinon fallback système documenté en commentaire.
-- Contenu : celui du wireframe (donc du print) verbatim. Les `TROU DE CONTENU` restent visibles tels quels dans la page — c'est une information pour le client, pas un défaut à masquer.
-- Images : uniquement `assets/web/` (copie-les dans `site/assets/` ou référence-les en relatif), avec `alt` descriptifs, `loading="lazy"` hors hero, `width`/`height` posés.
-- Responsive : mobile-first, les notes mobile du wireframe font foi.
+## Rules
+- Semantic HTML (header/nav/main/section/footer), one `site/index.html` file + `site/styles.css` (+ `site/script.js` only if an interaction from the PRD requires it — mobile menu, gallery). No framework, no build.
+- All tokens (colors, fonts, spacing, radius) come from docs/design-system.md, declared as CSS variables. Zero invented value. Fonts: Google Fonts if the design system planned a free substitution, otherwise a system fallback documented in a comment.
+- Content: the wireframe's (hence the print's) verbatim, in the project language. The `CONTENT GAP` markers stay visible as-is in the page — they are information for the client, not a flaw to hide.
+- Images: only `assets/web/` (copy them into `site/assets/` or reference them relatively), with descriptive `alt` text, `loading="lazy"` outside the hero, `width`/`height` set.
+- Responsive: mobile-first, the wireframe's mobile notes are authoritative.
 
-## Déroulé
-1. Lis les docs sources, construis la page section par section dans l'ordre du wireframe.
-2. Vérifie : ouvre le rendu (screenshot navigateur si disponible, sinon relecture attentive) et contrôle palette, hiérarchie typographique et présence de chaque section. Corrige avant de livrer.
-3. Si le projet est un repo git, commite (`feat: prototype html`).
+## Workflow
+1. Read the source docs, build the page section by section in the wireframe order.
+2. Verify: open the result (browser screenshot if available, otherwise a careful re-read) and check palette, type hierarchy and the presence of every section. Fix before delivering.
+3. If the project is a git repo, commit (`feat: html prototype`).
 
-Termine par : "Prototype dans site/index.html — ouvre-le dans un navigateur. Le pipeline est complet : /ptw-status pour l'état final."
+End with: "Prototype in site/index.html — open it in a browser. The pipeline is complete: /ptw-status for the final state." (in the user's language).

@@ -12,6 +12,7 @@ set -euo pipefail
 #   ./install.sh --global --target all     Global Claude + Codex
 #   ./install.sh init [--target …]     Pose templates + rules dans le projet (après un global)
 #   ./install.sh update [--target …]   Met à jour le tooling + templates (préserve tes modifs)
+#   ./install.sh check                 Compare la version installée à la version distante (exit 10 si maj dispo)
 #   --force                            Écrase aussi les templates modifiés localement
 #
 # Deux portées, pour chaque cible : projet (dans le repo courant) ou global (--global).
@@ -127,6 +128,26 @@ wire_claude_md() {
   fi
 }
 
+# Compare la version installée (.ptw-version, la plus proche : projet puis global) au HEAD distant.
+# Sorties : 0 à jour, 10 mise à jour disponible, 1 pas d'install / distant injoignable.
+check_updates() {
+  local installed="" where="" dest remote
+  for dest in ./.claude ./.codex "$HOME/.claude" "$HOME/.codex"; do
+    if [ -f "$dest/.ptw-version" ]; then installed="$(cat "$dest/.ptw-version")"; where="$dest"; break; fi
+  done
+  [ -n "$installed" ] || { echo "✗ print-to-web n'est installé ni dans ce projet ni en global (pas de .ptw-version)." >&2; return 1; }
+  remote="$(git ls-remote "$REPO" HEAD 2>/dev/null | cut -f1)"
+  [ -n "$remote" ] || { echo "⚠  Impossible de joindre $REPO (hors-ligne ?)." >&2; return 1; }
+  case "$remote" in
+    "$installed"*)
+      echo "✅ À jour (version $installed, installée dans $where)." ;;
+    *)
+      echo "⬆  Mise à jour disponible : installé $installed ($where) → distant ${remote:0:7}."
+      echo "   Applique-la : ./install.sh update  (ou : curl -fsSL https://raw.githubusercontent.com/Dupflo/print-to-web/main/install.sh | bash -s -- update)"
+      return 10 ;;
+  esac
+}
+
 install_target() {
   case "$1" in
     claude)
@@ -181,6 +202,10 @@ case "$MODE" in
     echo "✅ templates + rules ajoutés à $(pwd) (cible $TARGET)"
     ;;
 
+  check)
+    check_updates
+    ;;
+
   update)
     install_target "$TARGET"
     echo "✅ print-to-web mis à jour ($TARGET, version $VERSION). AGENTS.md jamais touché — fusionne à la main si les rules ont évolué."
@@ -188,7 +213,7 @@ case "$MODE" in
 
   *)
     echo "Option inconnue : $MODE" >&2
-    echo "Usage : ./install.sh [--target claude|codex|all] [--global | init | update] [--force]" >&2
+    echo "Usage : ./install.sh [--target claude|codex|all] [--global | init | update | check] [--force]" >&2
     exit 1
     ;;
 esac

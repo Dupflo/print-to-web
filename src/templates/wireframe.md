@@ -25,6 +25,15 @@ Format: <the PRD's> · <n> sections · Primary CTA: <…>
 
 **Mobile:** <what stacks, disappears, transforms>
 
+### Overlay — <name> <!-- secondary content · trigger: <which block above> · mechanism: <popup / accordion / tab> -->
+```
++--------------------------------------+
+| <overlay content: blocks, hierarchy> |
++--------------------------------------+
+```
+| Block | Real content (source) | Asset |
+|---|---|---|
+
 ---
 
 ## 2. <Section>

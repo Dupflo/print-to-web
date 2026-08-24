@@ -24,6 +24,7 @@ Utilities:
 - `/ptw`         orchestrator: runs the whole pipeline with human checkpoints
 - `/ptw-status`  project state derived from the files, next command
 - `/ptw-help`    pipeline map (cheat sheet)
+- `/ptw-update`  check for a newer plugin version, apply it on confirmation
 
 ## Gates (mechanical, fail-closed)
 - `/ptw-brief` refuses to run without `docs/analyse.md` — the questionnaire must be informed by the analysis.
@@ -33,6 +34,7 @@ Utilities:
 - The `validated: yes` marker is set only by an explicit human validation (AskUserQuestion checkpoint in /ptw-brief or the orchestrator), never by the mere existence of the file.
 
 ## Content
+- Three exposure levels, decided in the PRD — never a binary keep/drop: **primary** (in the page flow), **secondary** (kept, available on demand: popup/modal, accordion, tab, annex page, download), **graveyard** (dropped). Content the client wants to keep without cluttering the page goes secondary, not to the graveyard. Secondary content travels through the whole pipeline: trigger + overlay in the wireframe, its own frame in the mockup.
 - Every piece of text in the mockup comes from the analyzed print documents or has been validated by the user. Lorem ipsum is forbidden. Missing content = a "content gap" reported in docs/analyse.md or docs/prd.md, never filled freestyle.
 - Figures, contacts and legal notices are copied verbatim from the print — never rephrased from memory.
 

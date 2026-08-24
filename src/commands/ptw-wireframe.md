@@ -21,8 +21,9 @@ The wireframe is a structure contract, not a drawing: section order, information
    - An ASCII desktop diagram (blocks, rough proportions, CTA position).
    - The content mapping: each block → real text (quoted or summarized with its reference) + likely asset (file name from the print folder).
    - Mobile notes: what stacks, what disappears, what transforms (e.g. table → cards).
-3. Section order = a conversion path: the PRD's primary CTA must be reachable without deep scrolling and repeated at the end of the page.
-4. Flag open structural decisions (e.g. floor plans as a gallery or as tabs?) via AskUserQuestion if they change the mockup — otherwise decide and record it.
-5. Write docs/wireframe.md (in the user's language). If the project is a git repo, commit (`docs: wireframe`).
+3. Secondary content (from the PRD's "Secondary content" table): each item appears twice — its trigger inside the host section's diagram (button, link, "+" on a card…), and its own overlay block after the section (popup/accordion/tab content), with the same real-content mapping as any block. Secondary content is part of the wireframe, not a footnote.
+4. Section order = a conversion path: the PRD's primary CTA must be reachable without deep scrolling and repeated at the end of the page.
+5. Flag open structural decisions (e.g. floor plans as a gallery or as tabs?) via AskUserQuestion if they change the mockup — otherwise decide and record it.
+6. Write docs/wireframe.md (in the user's language). If the project is a git repo, commit (`docs: wireframe`).
 
 End with: "Wireframe ready in docs/wireframe.md (<n> sections). Next step: /ptw-assets" (in the user's language).

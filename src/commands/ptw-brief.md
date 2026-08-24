@@ -27,14 +27,18 @@ Read docs/analyse.md: format recommendation, detected sections, content gaps, pl
 Cover these axes — rephrase each question with the concrete elements from the analysis:
 1. **Goal & conversion**: what is the site for (generating leads, informing, building credibility, selling)? What is THE primary CTA (form, phone, brochure download, appointment booking)?
 2. **Format**: present the analysis recommendation with its arguments, as the recommended option. The user validates or corrects. The format is decided here, not before.
-3. **Content perimeter**: among the sections detected in the brochure, which ones go to the web, which go to the graveyard? Is there web content that doesn't exist in print (to produce — content gap)?
+3. **Content perimeter**: for each section detected in the brochure, THREE possible fates — never a binary keep/drop:
+   - **Primary**: visible in the page flow.
+   - **Secondary**: kept, but available on demand — popup/modal, accordion, tab, annex page, download. The right home for content the client wants to keep without cluttering the page (detailed specs, floor plans, legal details…). Ask for the access mechanism and where its trigger lives.
+   - **Graveyard**: genuinely dropped.
+   Offer "secondary" explicitly whenever the user hesitates to drop something. Also: is there web content that doesn't exist in print (to produce — content gap)?
 4. **Features**: contact form, interactive map, gallery, brochure download, multilingual, blog/news, analytics. Check what's in the perimeter — everything else is explicitly out.
 5. **Constraints & context**: deadline, hosting/domain name, SEO requirements, privacy/legal notices, editorial tone (institutional, warm, technical…), priority device (desktop/mobile).
 The content gaps identified in the analysis are submitted to the user: who produces the missing content, or does the section get dropped?
 
 ### Step 3 — Write and validate
 1. Fill every section of the template with the answers. Fill nothing the user hasn't validated. The graveyard is exhaustive — it is what kills scope creep.
-2. Present the PRD summary (format, sections, CTA, features, graveyard) and ask via AskUserQuestion: "Validate this PRD?" — options: Validate / Modify. On Validate, write `validated: yes` in the frontmatter. Otherwise iterate — the marker stays `no`.
+2. Present the PRD summary (format, sections, secondary content with its mechanisms, CTA, features, graveyard) and ask via AskUserQuestion: "Validate this PRD?" — options: Validate / Modify. On Validate, write `validated: yes` in the frontmatter. Otherwise iterate — the marker stays `no`.
 3. Write docs/prd.md. If the project is a git repo, commit (`docs: prd`).
 
 End with: "PRD validated in docs/prd.md. Next step: /ptw-stories (or /ptw-design-system if you skip stories)" (in the user's language).

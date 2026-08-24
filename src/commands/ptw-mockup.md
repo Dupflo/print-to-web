@@ -21,7 +21,7 @@ $ARGUMENTS picks the tool if provided. Otherwise ask via AskUserQuestion: **Figm
 ### Figma via MCP
 1. The Figma MCP tools must be available (otherwise: tell the user to open the Figma connection in Claude, and fall back to "Brief only").
 2. First read the `figma-generate-design` skill (or failing that `figma-use` / the skill://figma resource) — mandatory before calling use_figma.
-3. Create a new Figma file named after the project, upload the optimized assets, then generate the mockup section by section following docs/mockup-brief.md. Desktop frame 1440; add a 390 mobile frame for the hero and one representative section.
+3. Create a new Figma file named after the project, upload the optimized assets, then generate the mockup section by section following docs/mockup-brief.md. Desktop frame 1440; a 390 mobile frame for the hero and one representative section; one frame per overlay listed in the brief (popup shown open over a dimmed page background — secondary content must be visible in the mockup, not implied).
 4. Check the result (MCP screenshot) against the design system's Do/Don't; fix flagrant deviations (colors outside the palette, unplanned substitution font).
 5. Deliver the Figma file link.
 

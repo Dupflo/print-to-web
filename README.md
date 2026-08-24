@@ -123,7 +123,7 @@ Le même principe s'applique partout : **l'agent constate et propose, l'humain t
 |---|---|---|
 | `/ptw <dossier>` | 🎼 Orchestrateur complet, checkpoints compris | tout ce qui suit |
 | `/ptw-analyze <dossier>` | Analyse du print : assets, identité, contenu, format recommandé | `docs/analyse.md` |
-| `/ptw-brief` | Questionnaire en une passe → PRD validé | `docs/prd.md` |
+| `/ptw-brief` | Questionnaire en une passe → PRD validé — chaque contenu est **primaire** (dans la page), **secondaire** (popup, accordéon, annexe) ou au **cimetière** | `docs/prd.md` |
 | `/ptw-stories` | 5-12 stories visiteur, jamais overkill | `docs/stories.md` |
 | `/ptw-design-system` | Tokens extraits du print + inspirations + prompts design | `docs/design-system.md` |
 | `/ptw-wireframe` | Squelette ASCII mappé sur le contenu réel | `docs/wireframe.md` |
@@ -131,6 +131,7 @@ Le même principe s'applique partout : **l'agent constate et propose, l'humain t
 | `/ptw-mockup` | Brief autonome puis maquette Figma (MCP) ou Claude Design | `docs/mockup-brief.md` + fichier Figma |
 | `/ptw-html` | Bonus : prototype HTML/CSS navigable | `site/index.html` |
 | `/ptw-status` | État du projet dérivé des fichiers | — |
+| `/ptw-update` | Détecte une nouvelle version du plugin et l'applique | — |
 | `/ptw-help` | Antisèche du pipeline | — |
 
 ## Installation
@@ -175,9 +176,15 @@ Après une install globale, posez les fichiers par projet (templates + rules) :
 
 ### Mise à jour
 
+Le plus simple, depuis l'agent : `/ptw-update` — détecte si une version plus récente existe sur GitHub et l'applique après confirmation.
+
+En ligne de commande :
+
 ```bash
+./install.sh check                     # compare la version installée au dépôt (exit 10 si maj dispo)
 ./install.sh update                    # Claude
 ./install.sh update --target codex     # Codex
+curl -fsSL https://raw.githubusercontent.com/Dupflo/print-to-web/main/install.sh | bash -s -- update
 ```
 
 Remplace proprement le tooling (tracké dans `.ptw-manifest` — vos propres commandes ne sont jamais touchées), rafraîchit les templates non modifiés (un template modifié localement n'est jamais écrasé sans `--force`), ne touche jamais `AGENTS.md`.

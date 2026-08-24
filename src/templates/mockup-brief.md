@@ -17,6 +17,7 @@
 ## Expected frames
 - Desktop 1440: full page
 - Mobile 390: hero + <representative section>
+- Overlays: one frame per popup/modal (open state, over a dimmed page background); accordions/tabs shown open in place
 
 ---
 
@@ -28,6 +29,13 @@
 
 ## Section 2 — <name>
 …
+
+---
+
+## Overlays (secondary content)
+### <name> — <mechanism>, triggered from <section/block>
+- Content (verbatim): <real texts>
+- Asset: <if any>
 
 ---
 

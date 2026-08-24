@@ -17,6 +17,7 @@ The prototype is a navigable reference for the client and a starting point for t
 - Semantic HTML (header/nav/main/section/footer), one `site/index.html` file + `site/styles.css` (+ `site/script.js` only if an interaction from the PRD requires it — mobile menu, gallery). No framework, no build.
 - All tokens (colors, fonts, spacing, radius) come from docs/design-system.md, declared as CSS variables. Zero invented value. Fonts: Google Fonts if the design system planned a free substitution, otherwise a system fallback documented in a comment.
 - Content: the wireframe's (hence the print's) verbatim, in the project language. The `CONTENT GAP` markers stay visible as-is in the page — they are information for the client, not a flaw to hide.
+- Secondary content (the wireframe's overlays) works for real, native elements first: `<details>/<summary>` for accordions, `<dialog>` for popups (its opener is the allowed use of `site/script.js`). An overlay that stays closed in the prototype defeats its purpose.
 - Images: only `assets/web/` (copy them into `site/assets/` or reference them relatively), with descriptive `alt` text, `loading="lazy"` outside the hero, `width`/`height` set.
 - Responsive: mobile-first, the wireframe's mobile notes are authoritative.
 

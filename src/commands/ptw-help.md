@@ -28,6 +28,7 @@ print-to-web — from a print document to a web mockup
   8. /ptw-html                bonus: navigable prototype → site/index.html
 
   /ptw-status             where the project stands, next command
+  /ptw-update             check for a newer plugin version, apply it
 
 Gates: no brief without analysis · no mockup without a validated PRD
        and a design system · identity never invented · lorem forbidden

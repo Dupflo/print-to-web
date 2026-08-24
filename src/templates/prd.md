@@ -18,8 +18,13 @@ validated: no
 | Section | Source content (print) | Priority | Linked story |
 |---|---|---|---|
 
+## Secondary content (on demand)
+<kept content that stays out of the page flow — the middle ground between a section and the graveyard>
+| Content | Source (print) | Mechanism (popup, accordion, tab, annex page, download) | Trigger (where in the page) |
+|---|---|---|---|
+
 ## Out of scope (graveyard)
-<what we explicitly do NOT do — discarded sections, refused features. Exhaustive: this list kills scope creep.>
+<what we explicitly do NOT do — discarded sections, refused features. Exhaustive: this list kills scope creep. Content worth keeping but too heavy for the page flow belongs in "Secondary content" above, not here.>
 
 ## Features
 | Feature | In scope? | Detail |

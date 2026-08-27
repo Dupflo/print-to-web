@@ -40,4 +40,4 @@
 **<one page / multipage / one page + annexes>** — <arguments: volume, self-standing sections, audiences, content with its own lifecycle>
 
 ## Gaps & open questions
-- <content missing from the print that a site usually expects — to settle in /ptw-brief>
+Recorded in **docs/gaps.md** (single register, `source: analyse`) — to settle in /ptw-brief. List here only the open QUESTIONS that aren't content gaps (e.g. "two logo variants — which is current?").

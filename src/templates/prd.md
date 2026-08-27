@@ -8,6 +8,11 @@ validated: no
 ## Site goal
 <what the site is for, in one sentence — and the primary CTA>
 
+## Client & decision chain
+- Validates in last resort: <direct client / mandating agency <name> / …>
+- Culture: <graphic design agency / digital studio / end client without design background>
+- The provided inspirations are their work: <yes / no / partly> — <if yes: their choices carry author's authority in visual arbitrations>
+
 ## Chosen format
 <one page / multipage / one page + annexes — decided with the user, note any deviation from the analysis recommendation>
 
@@ -15,6 +20,7 @@ validated: no
 <visitor profiles, visit context, priority device>
 
 ## Perimeter — kept sections
+<!-- "Linked story" starts as "to define": /ptw-stories comes back and fills it with the s0x ids. -->
 | Section | Source content (print) | Priority | Linked story |
 |---|---|---|---|
 
@@ -44,8 +50,7 @@ validated: no
 <deadline, hosting, domain name, SEO, privacy/legal notices, editorial tone>
 
 ## Content gaps
-| Missing content | Decision (who produces it / section dropped) |
-|---|---|
+See **docs/gaps.md** — the single register (this document never duplicates it). The brief's decisions (who produces what, what gets dropped) are recorded there, one status per line.
 
 ## Success criteria
 <observable: the visitor can do X, the site loads in Y, every section of the perimeter is present…>

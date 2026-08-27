@@ -7,6 +7,11 @@
 ## Direction
 <the project in one line + the visual direction: inspiration invariants, tone, what the mockup must convey>
 
+## Contested arbitrations (copied from the design system)
+<!-- so they arrive on the table at presentation time — never silently settled in the mockup -->
+| Decision | Taken by | What it contradicts | When to reopen |
+|---|---|---|---|
+
 ## Tokens
 <hex palette, typefaces (+ substitutions), scale, spacing, radius — copied from the design system>
 
@@ -40,4 +45,4 @@
 ---
 
 ## Content gaps
-<zones to display with the CONTENT GAP marker (in the project language) — do not invent>
+See **docs/gaps.md** (single register). List here only the zones the mockup must display with the CONTENT GAP marker (in the project language) — do not invent content for them.

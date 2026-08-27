@@ -8,6 +8,9 @@ Print folder: $ARGUMENTS (required on first run; afterwards the docs state is en
 
 You conduct the pipeline; the human checkpoints are non-negotiable and are actual AskUserQuestion calls — never a rhetorical sentence in your output. This is a conductor, not an autopilot. Each phase follows the contract of its dedicated command — same template, same gates, same output file. A phase whose doc already exists is skipped (the state is derived from the files). Talk to the user in the language of the print documents.
 
+## Phase 0 — Preflight
+On the first run (docs/ doesn't exist yet), apply the /ptw-doctor contract: test the tools (PDF rendering, WebP encoder, JPEG/PNG conversion) by executing them, and report everything missing at once with one install command. Three hard stops mid-pipeline is what this phase prevents. If docs/ already exists, skip unless a previous phase failed on tooling.
+
 ## Phase 1 — Analyze
 docs/analyse.md missing → run the /ptw-analyze contract on $ARGUMENTS. No $ARGUMENTS and no docs/analyse.md → ask for the folder.
 

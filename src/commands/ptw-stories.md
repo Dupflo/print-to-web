@@ -10,6 +10,8 @@ allowed-tools:
 Use this template as the output structure:
 @templates/stories.md
 
+If nothing was injected above (the template file is missing — typical of a global install without a project init), STOP: "templates/stories.md not found — run `~/.claude/print-to-web/install.sh init` (or the curl installer with `init`)". Never rebuild the structure from memory.
+
 Fail-closed: docs/prd.md must exist. Missing → STOP: "No PRD — run /ptw-brief first."
 
 A showcase site is not a SaaS: the stories exist to check that every section has a reason to exist and an observable success criterion, not to slice development work. Stay at scale.
@@ -25,6 +27,7 @@ A showcase site is not a SaaS: the stories exist to check that every section has
 1. Read docs/prd.md (audiences, sections, CTA, features).
 2. Write the stories, prioritized: the ones carrying the primary CTA first.
 3. Check coverage both ways (story ↔ section) and record the gaps in the file's "Gaps" section.
-4. Write docs/stories.md (in the user's language). If the project is a git repo, commit (`docs: stories`).
+4. **Backfill the PRD**: the "Linked story" column of the PRD's perimeter table was written "to define" — go fill it now with the s0x ids. Nobody else comes back for it. This is a mechanical backfill (ids only), it does NOT touch the perimeter or the `validated` marker.
+5. Write docs/stories.md (in the user's language). If the project is a git repo, commit (`docs: stories`).
 
 End with: "Stories ready in docs/stories.md (<n> stories). Next step: /ptw-design-system" (in the user's language).

@@ -11,7 +11,7 @@ set -euo pipefail
 #   ./install.sh --global --target codex   Global Codex (~/.codex/skills)
 #   ./install.sh --global --target all     Global Claude + Codex
 #   ./install.sh init [--target …]     Pose templates + rules dans le projet (après un global)
-#   ./install.sh update [--target …]   Met à jour le tooling + templates (préserve tes modifs)
+#   ./install.sh update [--target …]   Met à jour LÀ OÙ c'est installé (projet et/ou global ; préserve tes modifs)
 #   ./install.sh check                 Compare la version installée à la version distante (exit 10 si maj dispo)
 #   --force                            Écrase aussi les templates modifiés localement
 #
@@ -37,12 +37,12 @@ CACHE="$HOME/.claude/print-to-web"
 ORIG="./.print-to-web/templates.orig"   # baseline templates, pour détecter les modifs locales
 
 # --- Arguments : mode + --target + --force ---
-FORCE=0; TARGET="claude"; MODE=""
+FORCE=0; TARGET="claude"; TARGET_SET=0; MODE=""
 while [ $# -gt 0 ]; do
   case "$1" in
     -f|--force)   FORCE=1 ;;
-    --target)     TARGET="${2:-}"; shift ;;
-    --target=*)   TARGET="${1#--target=}" ;;
+    --target)     TARGET="${2:-}"; TARGET_SET=1; shift ;;
+    --target=*)   TARGET="${1#--target=}"; TARGET_SET=1 ;;
     *)            MODE="$1" ;;
   esac
   shift
@@ -148,6 +148,34 @@ check_updates() {
   esac
 }
 
+# Cache partagé (templates + AGENTS.md + installeur) pour `init` par projet, après un global.
+seed_cache() {
+  mkdir -p "$CACHE"
+  cp -R "$SRC/templates" "$CACHE/"
+  cp "$SRC/AGENTS.md" "$CACHE/"
+  cp "$PAYLOAD_ROOT/install.sh" "$CACHE/install.sh" 2>/dev/null \
+    || cp "${BASH_SOURCE[0]:-$0}" "$CACHE/install.sh" 2>/dev/null || true
+}
+
+# Met à jour là où print-to-web est déjà installé (projet et/ou global, claude et/ou codex).
+# Respecte --target s'il est passé explicitement ; sinon met à jour tout ce qui existe.
+# Retour : 0 si au moins une installation mise à jour, 1 sinon.
+update_existing() {
+  local did=0
+  want() { [ "$TARGET_SET" = 0 ] || [ "$TARGET" = all ] || [ "$TARGET" = "$1" ]; }
+  if [ -f ./.claude/.ptw-version ] && want claude; then install_target claude; did=1; fi
+  if [ -f ./.codex/.ptw-version ]  && want codex;  then install_target codex;  did=1; fi
+  if [ -f "$HOME/.claude/.ptw-version" ] && want claude; then
+    copy_tooling_claude "$HOME/.claude"; seed_cache
+    echo "✅ print-to-web mis à jour (global Claude, version $VERSION)."; did=1
+  fi
+  if [ -f "$HOME/.codex/.ptw-version" ] && want codex; then
+    copy_tooling_codex "$HOME/.codex"; seed_cache
+    echo "✅ print-to-web mis à jour (global Codex, version $VERSION)."; did=1
+  fi
+  [ "$did" = 1 ]
+}
+
 install_target() {
   case "$1" in
     claude)
@@ -168,18 +196,32 @@ install_target() {
 
 case "$MODE" in
   ""|--project)
-    install_target "$TARGET"
+    # Une installation globale existe et rien dans ce projet ? Installer « nu » écrirait
+    # commandes + templates + AGENTS.md dans le dossier courant SANS mettre à jour ce qui
+    # est réellement installé. On propose la mise à jour du global à la place.
+    if [ ! -f ./.claude/.ptw-version ] && [ ! -f ./.codex/.ptw-version ] \
+       && { [ -f "$HOME/.claude/.ptw-version" ] || [ -f "$HOME/.codex/.ptw-version" ]; }; then
+      echo "⚠  print-to-web est déjà installé en global (~/.claude ou ~/.codex), pas dans ce projet."
+      answer=""
+      # /dev/tty peut exister sans être ouvrable (curl | bash détaché) : on teste l'ouverture réelle.
+      if { printf "   Mettre à jour l'installation globale plutôt qu'installer dans ce dossier ? [O/n] " > /dev/tty; } 2>/dev/null; then
+        read -r answer < /dev/tty || answer="O"
+      else
+        answer="O"   # non interactif : le global gagne, jamais de dépôt surprise dans le dossier courant
+      fi
+      case "$answer" in
+        n|N|non|no)
+          install_target "$TARGET" ;;
+        *)
+          update_existing
+          echo "→ Pour poser templates + rules dans CE projet : ~/.claude/print-to-web/install.sh init" ;;
+      esac
+    else
+      install_target "$TARGET"
+    fi
     ;;
 
   -g|--global)
-    # Cache partagé (templates + AGENTS.md + installeur) pour `init` par projet.
-    seed_cache() {
-      mkdir -p "$CACHE"
-      cp -R "$SRC/templates" "$CACHE/"
-      cp "$SRC/AGENTS.md" "$CACHE/"
-      cp "$PAYLOAD_ROOT/install.sh" "$CACHE/install.sh" 2>/dev/null \
-        || cp "${BASH_SOURCE[0]:-$0}" "$CACHE/install.sh" 2>/dev/null || true
-    }
     case "$TARGET" in
       claude)
         copy_tooling_claude "$HOME/.claude"; seed_cache
@@ -207,8 +249,14 @@ case "$MODE" in
     ;;
 
   update)
-    install_target "$TARGET"
-    echo "✅ print-to-web mis à jour ($TARGET, version $VERSION). AGENTS.md jamais touché — fusionne à la main si les rules ont évolué."
+    # « update » met à jour LÀ OÙ c'est installé (projet et/ou global) — jamais une install neuve en douce.
+    if update_existing; then
+      echo "ℹ  AGENTS.md du projet jamais écrasé — fusionne à la main si les rules ont évolué."
+    else
+      echo "✗ Aucune installation print-to-web trouvée (ni ./.claude, ./.codex, ~/.claude, ~/.codex)." >&2
+      echo "  Installe d'abord : ./install.sh [--global] [--target claude|codex|all]" >&2
+      exit 1
+    fi
     ;;
 
   *)

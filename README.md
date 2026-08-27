@@ -122,8 +122,9 @@ Le même principe s'applique partout : **l'agent constate et propose, l'humain t
 | Commande | Rôle | Sortie |
 |---|---|---|
 | `/ptw <dossier>` | 🎼 Orchestrateur complet, checkpoints compris | tout ce qui suit |
+| `/ptw-doctor` | Vérifie l'outillage AVANT que le pipeline en ait besoin (rendu PDF, encodeur WebP, formats Figma) — en **exécutant** chaque outil, et signale tout ce qui manque d'un coup | — |
 | `/ptw-analyze <dossier>` | Analyse du print : assets, identité, contenu, format recommandé | `docs/analyse.md` |
-| `/ptw-brief` | Questionnaire en une passe → PRD validé — chaque contenu est **primaire** (dans la page), **secondaire** (popup, accordéon, annexe) ou au **cimetière** | `docs/prd.md` |
+| `/ptw-brief` | Questionnaire en une passe → PRD validé — qui est le client et qui décide, chaque contenu **primaire** (dans la page), **secondaire** (popup, accordéon, annexe) ou au **cimetière** (relu à voix haute et confirmé, jamais déduit d'une case décochée) | `docs/prd.md` |
 | `/ptw-stories` | 5-12 stories visiteur, jamais overkill | `docs/stories.md` |
 | `/ptw-design-system` | Tokens extraits du print + inspirations + prompts design | `docs/design-system.md` |
 | `/ptw-wireframe` | Squelette ASCII mappé sur le contenu réel | `docs/wireframe.md` |
@@ -183,12 +184,11 @@ En ligne de commande :
 
 ```bash
 ./install.sh check                     # compare la version installée au dépôt (exit 10 si maj dispo)
-./install.sh update                    # Claude
-./install.sh update --target codex     # Codex
+./install.sh update                    # met à jour LÀ OÙ c'est installé (projet et/ou global, Claude et/ou Codex)
 curl -fsSL https://raw.githubusercontent.com/Dupflo/print-to-web/main/install.sh | bash -s -- update
 ```
 
-Remplace proprement le tooling (tracké dans `.ptw-manifest` — vos propres commandes ne sont jamais touchées), rafraîchit les templates non modifiés (un template modifié localement n'est jamais écrasé sans `--force`), ne touche jamais `AGENTS.md`.
+`update` détecte les installations existantes et les met à jour sur place — il n'installe jamais au mauvais endroit. De même, l'installation « nue » qui détecte une installation globale existante propose de la mettre à jour plutôt que de déposer des fichiers dans le dossier courant. Le tooling est remplacé proprement (tracké dans `.ptw-manifest` — vos propres commandes ne sont jamais touchées), les templates non modifiés sont rafraîchis (un template modifié localement n'est jamais écrasé sans `--force`), `AGENTS.md` n'est jamais touché.
 
 ## Ce que le pipeline attend en entrée
 
@@ -207,13 +207,14 @@ Et ce qu'il produit :
 votre-projet/
 ├── docs/
 │   ├── analyse.md             # inventaire + identité + format recommandé
+│   ├── gaps.md                # registre UNIQUE des trous de contenu (source, statut, décision)
 │   ├── prd.md                 # périmètre validé (frontmatter validated: yes)
 │   ├── stories.md             # stories visiteur
-│   ├── design-system.md       # tokens + prompts design
+│   ├── design-system.md       # tokens + prompts design + arbitrages contestés
 │   ├── wireframe.md           # squelette + mapping contenu réel
 │   ├── assets.md              # manifeste original → optimisé
 │   └── mockup-brief.md        # brief de maquette autonome et réutilisable
-├── assets/web/                # images WebP optimisées
+├── assets/web/                # images WebP optimisées (+ miroir figma/ en JPEG/PNG si maquette Figma)
 └── site/                      # bonus : prototype HTML
 ```
 

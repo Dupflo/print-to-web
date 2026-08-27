@@ -44,5 +44,9 @@ Format: <the PRD's> · <n> sections · Primary CTA: <…>
 ## Structural decisions
 - <decision made + discarded alternative, or question settled with the user>
 
+## Coverage check
+- Sections without a story: <… or none>
+- Stories without a section: <… or none>
+
 ## Remaining content gaps
-- <inherited from the PRD, visible in the wireframe under the CONTENT GAP marker (in the project language)>
+See **docs/gaps.md**. The wireframe shows each open gap in place under the CONTENT GAP marker (in the project language); new gaps discovered here are appended to docs/gaps.md with `source: wireframe`, never listed only here.

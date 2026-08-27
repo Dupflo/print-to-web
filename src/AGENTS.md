@@ -12,6 +12,8 @@ Instructions are in English; the user is not. Speak to the user and write the co
 
 Plain language: the readers are designers and their clients, not developers. In questions and in every `docs/` file, avoid unexplained technical jargon ("scope creep", "above the fold", "token", "responsive", "CTA"…) — use the everyday word, or keep the technical term with a short plain-language gloss in parentheses the first time it appears. A question the client has to google is a failed question.
 
+Heading consistency: the first doc written in the project fixes the canonical translation of each template heading; every later doc reuses those exact headings (check an existing doc before translating anew — no drift between "Contenus secondaires" and "Contenu secondaire"). Same for recurring markers: the CONTENT GAP marker keeps one single form across all docs.
+
 ## Pipeline (commands)
 - `/ptw-analyze <folder>`   analyze the print folder: asset inventory, visual identity, content structure, recommended web format
 - `/ptw-brief`              one-pass framing questionnaire → PRD: goal, validated format, perimeter, features, constraints
@@ -24,6 +26,7 @@ Plain language: the readers are designers and their clients, not developers. In 
 
 Utilities:
 - `/ptw`         orchestrator: runs the whole pipeline with human checkpoints
+- `/ptw-doctor`  one-pass environment check (PDF rendering, WebP encoder, Figma-ready formats) — EXECUTES each tool instead of locating it, reports everything missing at once with install commands. Run automatically at the start of /ptw and /ptw-analyze.
 - `/ptw-status`  project state derived from the files, next command
 - `/ptw-help`    pipeline map (cheat sheet)
 - `/ptw-review`  fresh-eyes review of the docs by a DIFFERENT agent (Codex CLI if available, otherwise a fresh-context subagent) — clarity for non-technical readers, cross-doc coherence, verbatim fidelity. Advisory: a failed review blocks nothing mechanically, but /ptw-mockup and the orchestrator surface it.
@@ -38,7 +41,8 @@ Utilities:
 
 ## Content
 - Three exposure levels, decided in the PRD — never a binary keep/drop: **primary** (in the page flow), **secondary** (kept, available on demand: popup/modal, accordion, tab, annex page, download), **graveyard** (dropped). Content the client wants to keep without cluttering the page goes secondary, not to the graveyard. Secondary content travels through the whole pipeline: trigger + overlay in the wireframe, its own frame in the mockup.
-- Every piece of text in the mockup comes from the analyzed print documents or has been validated by the user. Lorem ipsum is forbidden. Missing content = a "content gap" reported in docs/analyse.md or docs/prd.md, never filled freestyle.
+- Every piece of text in the mockup comes from the analyzed print documents or has been validated by the user. Lorem ipsum is forbidden. Missing content = a "content gap" recorded in **docs/gaps.md** — the SINGLE gap register (one line per gap: source phase, status, decision). Every phase appends there; the other docs point to it and never duplicate the list. Never filled freestyle.
+- A real disagreement between visual sources (print vs inspirations) is a **contested arbitration**: recorded in the design system's dedicated table (decision / taken by / what it contradicts / when to reopen) and copied at the top of the mockup brief — never silently settled by the agent.
 - Figures, contacts and legal notices are copied verbatim from the print — never rephrased from memory.
 
 ## Design
@@ -48,14 +52,16 @@ Utilities:
 
 ## Assets
 - The original files in the print folder are NEVER modified, moved or renamed.
-- Optimized images live in `assets/web/`, with a manifest `docs/assets.md` (original → optimized, dimensions, weight, usage).
+- Optimized images live in `assets/web/`, with a manifest `docs/assets.md` (original → optimized, dimensions, weight, usage). A file that grew after optimization is flagged, never silently kept.
 - The mockup and the HTML reference the optimized assets, never the originals.
+- Figma's canvas does not render WebP (uploads succeed, frames stay empty): the Figma path of /ptw-mockup uploads from a JPEG/PNG mirror in `assets/web/figma/`, never the .webp files.
 
 ## Data & docs lifecycle
 All pipeline data lives in markdown files under docs/, versioned by git when the project is a repo. No database, no state file: the state is derived from the files (the analysis is done if docs/analyse.md exists, the PRD is validated if its frontmatter says `validated: yes`) — a derived state can't go stale.
 
 - docs/analyse.md — inventory + identity + structure + format recommendation
-- docs/prd.md — site perimeter (frontmatter `validated: yes|no`)
+- docs/gaps.md — single content-gap register (source phase, status, decision per line — the only copy)
+- docs/prd.md — site perimeter (frontmatter `validated: yes|no`), incl. client & decision chain
 - docs/stories.md — visitor stories
 - docs/design-system.md — tokens, components, patterns, design prompts
 - docs/wireframe.md — desktop sections wireframe + mobile notes

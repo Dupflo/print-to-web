@@ -11,6 +11,8 @@ allowed-tools:
 Use this template as the output structure:
 @templates/wireframe.md
 
+If nothing was injected above (the template file is missing — typical of a global install without a project init), STOP: "templates/wireframe.md not found — run `~/.claude/print-to-web/install.sh init` (or the curl installer with `init`)". Never rebuild the structure from memory.
+
 Fail-closed: docs/prd.md must exist (it locks the format and the sections). Missing → STOP: "No PRD — run /ptw-brief first." docs/design-system.md is recommended but not blocking: without it, the wireframe stays purely structural (no visual indication).
 
 The wireframe is a structure contract, not a drawing: section order, information hierarchy inside each section, and above all the mapping to real content. Lorem ipsum is forbidden — every text zone cites its source content (brochure, page/section) or carries the `CONTENT GAP` marker inherited from the PRD (translated into the user's language, e.g. `TROU DE CONTENU` in French — keep it consistent across all docs).
@@ -24,6 +26,8 @@ The wireframe is a structure contract, not a drawing: section order, information
 3. Secondary content (from the PRD's "Secondary content" table): each item appears twice — its trigger inside the host section's diagram (button, link, "+" on a card…), and its own overlay block after the section (popup/accordion/tab content), with the same real-content mapping as any block. Secondary content is part of the wireframe, not a footnote.
 4. Section order = a conversion path: the PRD's primary CTA must be reachable without deep scrolling and repeated at the end of the page.
 5. Flag open structural decisions (e.g. floor plans as a gallery or as tabs?) via AskUserQuestion if they change the mockup — otherwise decide and record it.
-6. Write docs/wireframe.md (in the user's language). If the project is a git repo, commit (`docs: wireframe`).
+6. **Coverage cross-check** (mechanical, fill the template's "Coverage check" section): every section cites a story, every story of docs/stories.md lands in a section. A section without a story or a story without a section is reported to the user — not silently absorbed.
+7. Content gaps: show each open gap of docs/gaps.md in place under the CONTENT GAP marker; append newly discovered gaps to docs/gaps.md (`source: wireframe`) — never keep a local-only list.
+8. Write docs/wireframe.md (in the user's language). If the project is a git repo, commit (`docs: wireframe`).
 
 End with: "Wireframe ready in docs/wireframe.md (<n> sections). Next step: /ptw-assets" (in the user's language).

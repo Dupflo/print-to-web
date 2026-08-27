@@ -31,6 +31,11 @@ Scale: <h1 … body … small, desktop / mobile>
 - Invariants (present in every variant — non-negotiable): <…>
 - Settled options: <chosen option + why>
 
+## Contested arbitrations
+<!-- A real disagreement between sources (e.g. the print says CAPITALS, the inspirations say lowercase) is not a "settled option": record it here so it reaches the presentation table instead of being silently decided. /ptw-mockup copies this table at the top of the brief. -->
+| Decision | Taken by | What it contradicts | When to reopen |
+|---|---|---|---|
+
 ## Components
 | Component | Usage | Variants |
 |---|---|---|

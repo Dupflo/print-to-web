@@ -13,6 +13,8 @@ allowed-tools:
 Use this template as the output structure:
 @templates/design-system.md
 
+If nothing was injected above (the template file is missing — typical of a global install without a project init), STOP: "templates/design-system.md not found — run `~/.claude/print-to-web/install.sh init` (or the curl installer with `init`)". Never rebuild the structure from memory.
+
 ## Execution contract (non-negotiable)
 You are FORBIDDEN from:
 - Inventing a visual identity from nothing.
@@ -34,6 +36,7 @@ Fill the template:
 - Components: only the ones the wireframe/PRD calls for (buttons, key-figure card, contact card, nav, footer…). Name + usage + variants.
 - UI patterns: image treatment, form states, responsive.
 - Do / Don't: what the inspirations and the print impose or exclude.
+- **Contested arbitrations**: when two legitimate sources disagree (e.g. the print uses CAPITALS, the inspirations use lowercase — and the inspirations' author is the mandating agency), do NOT settle it silently as an "option". Record it in the dedicated table: decision / taken by / what it contradicts / when to reopen. If nobody with authority has decided, the decision column says "open — to settle at presentation". /ptw-mockup copies this table into the brief.
 - **Design prompts**: for each major section of the site, a self-contained prompt (direction + tokens + real content) ready to paste into Claude Design or Figma Make. This is the bridge to the mockup tools.
 
 ### Step 3 — Write
